@@ -1,2 +1,2 @@
-# LeXeMe
-Language-aware XML Merger
+# LeXeMe - Website
+Website of the Language-aware XML Merger
