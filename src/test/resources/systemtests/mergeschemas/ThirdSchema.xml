@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ms:MergeSchema for="" root="false" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../main/resources/xsd/MergeSchema.xsd ">
+  <ms:Definition namespace="http://www.example.org/ThirdSchema"/>
+
+  <ms:DefaultCriterion xpath="true()"/>
+
+  <ms:Handling for="A">
+    <ms:Criterion xpath="./C"/>
+  </ms:Handling>
+
+</ms:MergeSchema>

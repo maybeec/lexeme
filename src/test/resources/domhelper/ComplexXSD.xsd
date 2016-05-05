@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+xmlns="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://www.example.org/ComplexXSD"
+xmlns:tns="http://www.example.org/ComplexXSD"
+elementFormDefault="qualified">
+
+    <element name="A" type="tns:ComplexType"></element>
+
+    <complexType name="ComplexType">
+      <sequence>
+        <element name="B" type="tns:RestrictedAttributeType" maxOccurs="unbounded" minOccurs="1"></element>
+      </sequence>
+      <attribute name="a" type="tns:RestrictedAttributeType"></attribute>
+    </complexType>
+
+    <simpleType name="RestrictedAttributeType">
+      <restriction base="int">
+        <minInclusive value="10"></minInclusive>
+        <maxInclusive value="20"></maxInclusive>
+      </restriction>
+    </simpleType>
+</schema>

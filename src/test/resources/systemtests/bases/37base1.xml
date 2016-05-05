@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tns:root xmlns:tns="http://someExtension.com" xmlns:ext="http://someBase.com">
+  <tns:a>
+    <ext:b id="1"/>
+  </tns:a>
+</tns:root>

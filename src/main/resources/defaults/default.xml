@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ms:MergeSchema xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../xsd/MergeSchema.xsd ">
+  <ms:Definition location="" type="dtd"/>
+  <ms:Handling for="">
+    <ms:Attribute for=""/>
+    <ms:Content type="use-first"/>
+  </ms:Handling>
+  <ms:Attribute for=""/>
+  <ms:Content type="use-first"/>
+</ms:MergeSchema>

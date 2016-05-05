@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<def:A xmlns:def="http://www.example.org/SecondSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/SecondSchema src/test/resources/systemtests/schemas/SecondSchema.xsd ">
+  <def:B id="def"/>
+  <def:C>
+    <def:Ca>0</def:Ca>
+    <def:Cb>0</def:Cb>
+    <def:Cb>2</def:Cb>
+  </def:C>
+</def:A>

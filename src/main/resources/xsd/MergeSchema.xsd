@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://may-bee.github.io/lexeme/mergeschema"
+  xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" elementFormDefault="qualified">
+
+  <complexType name="Content">
+    <attribute name="attachable" type="boolean" use="optional" default="false"></attribute>
+    <attribute name="separationString" type="string" use="optional" default=""></attribute>
+  </complexType>
+
+  <complexType name="DefaultCriterionType">
+    <attribute name="xpath" type="ms:xpath" default="./*" use="optional"></attribute>
+    <attribute name="ordered" type="boolean" default="false" use="optional"/>
+  </complexType>
+
+  <complexType name="Handling">
+    <sequence>
+      <element name="Criterion" type="ms:Criterion" maxOccurs="unbounded" minOccurs="0">
+      </element>
+      <element name="Handling" type="ms:Handling" maxOccurs="unbounded" minOccurs="0">
+      </element>
+      <element name="Attribute" type="ms:Attribute" maxOccurs="unbounded" minOccurs="0">
+      </element>
+      <element name="Content" type="ms:Content" maxOccurs="1" minOccurs="0">
+      </element>
+    </sequence>
+    <attribute name="for" type="string" use="required"></attribute>
+    <attribute name="unique" type="boolean" use="optional" default="false"></attribute>
+    <attribute name="where" type="ms:xpath" use="optional" default="true()"></attribute>
+    <attribute name="scope-ref" type="string" use="optional" default=""/>
+    <attribute name="namespace-ref" type="string" use="optional" default=""/>
+    <attribute name="label" type="string" use="optional" default=""/>
+    <attribute name="attachable-text" type="boolean" use="optional" default="false"/>
+
+  </complexType>
+
+  <complexType name="MergeSchema">
+    <complexContent>
+      <extension base="ms:Handling">
+        <sequence>
+          <element name="Definition" type="ms:Definition" maxOccurs="1" minOccurs="1"></element>
+          <element name="DefaultCriterion" type="ms:DefaultCriterionType" minOccurs="0"/>
+        </sequence>
+        <attribute name="root" type="boolean" use="optional" default="true"/>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="Definition">
+    <sequence>
+      <element name="AdditionalNamespace" type="ms:AdditionalNamespace" minOccurs="0" maxOccurs="unbounded"/>
+    </sequence>
+    <attribute name="location" type="string" use="optional" default=""></attribute>
+    <attribute name="type" type="ms:schemaType" use="optional" default="xsd"></attribute>
+    <attribute name="namespace" type="string" use="required"></attribute>
+  </complexType>
+
+  <simpleType name="schemaType">
+    <restriction base="string">
+      <enumeration value="dtd"></enumeration>
+      <enumeration value="xsd"></enumeration>
+    </restriction>
+  </simpleType>
+
+  <element name="MergeSchema" type="ms:MergeSchema"></element>
+
+  <complexType name="Criterion">
+    <attribute name="xpath" type="ms:xpath" use="optional" default="./*"></attribute>
+    <attribute name="ordered" type="boolean" use="optional" default="false"></attribute>
+  </complexType>
+
+  <complexType name="Attribute">
+    <attribute name="for" type="string" use="required"></attribute>
+    <attribute name="attachable" type="boolean" use="optional" default="false"></attribute>
+    <attribute name="separationString" type="string" use="optional" default=""></attribute>
+  </complexType>
+
+  <complexType name="AdditionalNamespace">
+    <attribute name="location" type="string" use="optional" default=""></attribute>
+    <attribute name="namespace" type="string" use="required"></attribute>
+  </complexType>
+
+
+
+
+  <simpleType name="xpath">
+    <restriction base="string"></restriction>
+  </simpleType>
+
+
+
+</schema>

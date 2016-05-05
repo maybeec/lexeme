@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:A xmlns:sns="http://example.org/SecondSchema" xmlns:tns="http://www.example.org/FirstSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/FirstSchema src/test/resources/validator/FirstSchema.xsd http://example.org/SecondSchema src/test/resources/validator/SecondSchema.xsd ">
+<sns:C/>
+
+</tns:A>

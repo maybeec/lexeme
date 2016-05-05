@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ms:MergeSchema for="config" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../main/resources/xsd/MergeSchema.xsd ">
+  <ms:Definition namespace="http://www.springframework.org/schema/aop" location="src/test/resources/systemtests/schemas/SpringAOP.xsd"/>
+  <ms:Handling for="pointcut">
+    <ms:Criterion xpath="./@id"/>
+  </ms:Handling>
+  <ms:Handling for="advisor">
+    <ms:Criterion xpath="./@id"/>
+  </ms:Handling>
+</ms:MergeSchema>

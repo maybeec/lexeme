@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:A xmlns:tns="http://www.example.org/FirstXMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/FirstXMLSchema src/test/resources/systemtests/schemas/FirstXMLSchema.xsd ">
+  <tns:B id="abc"/>
+  <tns:C id="abc"/>
+</tns:A>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- reduced version for test purposes only -->
+<ms:MergeSchema for="" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../main/resources/xsd/MergeSchema.xsd ">
+  <ms:Definition location="src/test/resources/systemtests/schemas/SpringBeans.xsd" type="xsd" namespace = "http://www.springframework.org/schema/beans"/>
+  <ms:Handling for="bean">
+    <ms:Criterion xpath="./@id"/>
+    <ms:Handling for="property">
+      <ms:Criterion xpath="./@name"/>
+    </ms:Handling>
+    <!-- ms:Attribute for="parent" type="use-last"/-->
+    <!-- ms:Attribute for="abstract" type="use-last"/-->
+  </ms:Handling>
+</ms:MergeSchema>
