@@ -2,25 +2,21 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://may-bee.github.io/lexeme/mergeschema"
   xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" elementFormDefault="qualified">
 
-  <complexType name="Content">
-    <attribute name="attachable" type="boolean" use="optional" default="false"></attribute>
-    <attribute name="separationString" type="string" use="optional" default=""></attribute>
-  </complexType>
 
-  <complexType name="DefaultCriterionType">
+  <complexType name="default-criterion-type">
     <attribute name="xpath" type="ms:xpath" default="./*" use="optional"></attribute>
     <attribute name="ordered" type="boolean" default="false" use="optional"/>
   </complexType>
 
-  <complexType name="Handling">
+  <complexType name="handling">
     <sequence>
-      <element name="Criterion" type="ms:Criterion" maxOccurs="unbounded" minOccurs="0">
+      <element name="Criterion" type="ms:criterion" maxOccurs="unbounded" minOccurs="0">
       </element>
-      <element name="Handling" type="ms:Handling" maxOccurs="unbounded" minOccurs="0">
+      <element name="Handling" type="ms:handling" maxOccurs="unbounded" minOccurs="0">
       </element>
-      <element name="Attribute" type="ms:Attribute" maxOccurs="unbounded" minOccurs="0">
+      <element name="Attribute" type="ms:attribute" maxOccurs="unbounded" minOccurs="0">
       </element>
-      <element name="Content" type="ms:Content" maxOccurs="1" minOccurs="0">
+      <element name="Content" type="string" maxOccurs="1" minOccurs="0">
       </element>
     </sequence>
     <attribute name="for" type="string" use="required"></attribute>
@@ -33,48 +29,48 @@
 
   </complexType>
 
-  <complexType name="MergeSchema">
+  <complexType name="merge-schema">
     <complexContent>
-      <extension base="ms:Handling">
+      <extension base="ms:handling">
         <sequence>
-          <element name="Definition" type="ms:Definition" maxOccurs="1" minOccurs="1"></element>
-          <element name="DefaultCriterion" type="ms:DefaultCriterionType" minOccurs="0"/>
+          <element name="Definition" type="ms:definition" maxOccurs="1" minOccurs="1"></element>
+          <element name="DefaultCriterion" type="ms:default-criterion-type" minOccurs="0"/>
         </sequence>
         <attribute name="root" type="boolean" use="optional" default="true"/>
       </extension>
     </complexContent>
   </complexType>
 
-  <complexType name="Definition">
+  <complexType name="definition">
     <sequence>
-      <element name="AdditionalNamespace" type="ms:AdditionalNamespace" minOccurs="0" maxOccurs="unbounded"/>
+      <element name="AdditionalNamespace" type="ms:additional-namespace" minOccurs="0" maxOccurs="unbounded"/>
     </sequence>
     <attribute name="location" type="string" use="optional" default=""></attribute>
-    <attribute name="type" type="ms:schemaType" use="optional" default="xsd"></attribute>
+    <attribute name="type" type="ms:schema" use="optional" default="xsd"></attribute>
     <attribute name="namespace" type="string" use="required"></attribute>
   </complexType>
 
-  <simpleType name="schemaType">
+  <simpleType name="schema">
     <restriction base="string">
       <enumeration value="dtd"></enumeration>
       <enumeration value="xsd"></enumeration>
     </restriction>
   </simpleType>
 
-  <element name="MergeSchema" type="ms:MergeSchema"></element>
+  <element name="merge-schema" type="ms:merge-schema"></element>
 
-  <complexType name="Criterion">
+  <complexType name="criterion">
     <attribute name="xpath" type="ms:xpath" use="optional" default="./*"></attribute>
     <attribute name="ordered" type="boolean" use="optional" default="false"></attribute>
   </complexType>
 
-  <complexType name="Attribute">
+  <complexType name="attribute">
     <attribute name="for" type="string" use="required"></attribute>
     <attribute name="attachable" type="boolean" use="optional" default="false"></attribute>
     <attribute name="separationString" type="string" use="optional" default=""></attribute>
   </complexType>
 
-  <complexType name="AdditionalNamespace">
+  <complexType name="additional-namespace">
     <attribute name="location" type="string" use="optional" default=""></attribute>
     <attribute name="namespace" type="string" use="required"></attribute>
   </complexType>
