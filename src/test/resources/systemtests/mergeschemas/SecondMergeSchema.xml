@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ms:MergeSchema for="" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../main/resources/xsd/MergeSchema.xsd ">
-  <ms:Definition location="src/test/resources/systemtests/schemas/SecondSchema.xsd" type="xsd" namespace = "http://www.example.org/SecondSchema"/>
+<ms:merge-schema for="" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../main/resources/xsd/merge-schema.xsd ">
+  <ms:definition location="src/test/resources/systemtests/schemas/SecondSchema.xsd" type="xsd" namespace = "http://www.example.org/SecondSchema"/>
 
-  <ms:Handling for="B" unique="true">
-    <ms:Criterion xpath="true()"/>
-    <ms:Attribute for="id" attachable="true" separationString=";" />
-  </ms:Handling>
-  <ms:Handling for="C">
-    <ms:Criterion xpath="./Ca/text()"/>
-    <ms:Handling for="Ca" unique="true">
-      <ms:Criterion xpath="true()"/>
-    </ms:Handling>
-    <ms:Handling for="Cb" >
-      <ms:Criterion xpath="./text()"/>
-    </ms:Handling>
-  </ms:Handling>
-</ms:MergeSchema>
+  <ms:handling for="B" unique="true">
+    <ms:criterion xpath="true()"/>
+    <ms:attribute for="id" attachable="true" separationString=";" />
+  </ms:handling>
+  <ms:handling for="C">
+    <ms:criterion xpath="./Ca/text()"/>
+    <ms:handling for="Ca" unique="true">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="Cb" >
+      <ms:criterion xpath="./text()"/>
+    </ms:handling>
+  </ms:handling>
+</ms:merge-schema>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ms:MergeSchema for="root" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../../main/resources/xsd/MergeSchema.xsd ">
-  <ms:Definition namespace="http://someExtension.com"/>
+<ms:merge-schema for="root" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../../main/resources/xsd/merge-schema.xsd ">
+  <ms:definition namespace="http://someExtension.com"/>
 
-  <ms:DefaultCriterion xpath="./@id"/>
+  <ms:default-criterion xpath="./@id"/>
 
-  <ms:Handling for="a" unique="true" scope-ref="ref" namespace-ref="http://someBase.com">
-    <ms:Criterion xpath="true()"/>
-  </ms:Handling>
+  <ms:handling for="a" unique="true" scope-ref="ref" namespace-ref="http://someBase.com">
+    <ms:criterion xpath="true()"/>
+  </ms:handling>
 
 
-</ms:MergeSchema>
+</ms:merge-schema>

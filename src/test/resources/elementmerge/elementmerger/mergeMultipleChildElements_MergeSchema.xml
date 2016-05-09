@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ms:MergeSchema for="" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../main/resources/xsd/MergeSchema.xsd ">
-  <ms:Definition location="./" type="xsd"/>
-  <ms:Handling for="child">
-    <ms:Criterion xpath="true()"/>
-  </ms:Handling>
-</ms:MergeSchema>
+<ms:merge-schema for="" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../main/resources/xsd/merge-schema.xsd ">
+  <ms:definition location="./" type="xsd"/>
+  <ms:handling for="child">
+    <ms:criterion xpath="true()"/>
+  </ms:handling>
+</ms:merge-schema>
