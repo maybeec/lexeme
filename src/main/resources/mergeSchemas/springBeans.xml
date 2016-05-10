@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ms:merge-schema for="beans" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../xsd/merge-schema.xsd ">
+	<!-- merge-schema for spring bean documents. Patch document will be favored over base document -->
+  <ms:definition namespace="http://www.springframework.org/schema/beans"/>
+
+  <ms:default-criterion xpath="true()"/>
+
+  <ms:handling for="description" type="unique">
+  	<ms:criterion xpath="true()"/>
+  </ms:handling>
+  <ms:handling for="import">
+    <ms:criterion xpath="true()"/>
+  </ms:handling>
+  <ms:handling for="alias">
+    <ms:criterion xpath="true()"/>
+  </ms:handling>
+
+  <ms:handling for="bean" label="refListOrSetType">
+    <ms:criterion xpath="./@name"/>
+  	<!-- handling for description from the axis above -->
+  	<ms:handling for="constructor-arg">
+      <ms:criterion xpath="./@name"/>
+  	</ms:handling>
+
+    <ms:handling for="propertyType">
+      <ms:criterion xpath="./@name"/>
+    </ms:handling>
+
+    <ms:handling for="qualifier">
+      <ms:criterion xpath="./@type"/>
+    </ms:handling>
+
+    <ms:handling for="lookup-method">
+      <ms:criterion xpath="./@name"/>
+    </ms:handling>
+
+    <ms:handling for="replaced-method">
+      <ms:criterion xpath="./@name"/>
+      <ms:handling for="arg-type">
+        <ms:criterion xpath="./@match"/>
+      </ms:handling>
+    </ms:handling>
+
+    <!-- shared handlings -->
+    <ms:handling for="ref" type="unique">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="idref"  type="unique">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="value" type="unique">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="null"  type="unique">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="array" type="unique">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="list" type="unique">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="set" type="unique">
+    <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="map" type="unique">
+    <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="props" type="unique">
+    <ms:criterion xpath="true()"/>
+    </ms:handling>
+
+  </ms:handling> <!-- End handling for bean -->
+
+  <ms:handling for="meta">
+  	<ms:criterion xpath="./@key"/>
+  </ms:handling>
+
+</ms:merge-schema>

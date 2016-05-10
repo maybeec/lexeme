@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ms:merge-schema xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../main/resources/xsd/merge-schema.xsd ">
+  <ms:definition location="src/test/resources/systemtests/schemas/FirstXMLSchema.xsd"  namespace = "http://www.example.org/OtherFirstXMLSchema">
+    <ms:additional-namespace location="src/test/resources/systemtests/schemas/FirstXMLSchema.xsd" namespace = "http://www.example.org/FirstXMLSchema"/>
+  </ms:definition>
+  <ms:handling for="B">
+    <ms:criterion xpath="./@id"/>
+    <ms:attribute for="id" attachable="true"/>
+  </ms:handling>
+  <ms:handling for="C">
+    <ms:criterion xpath="true()"/>
+  </ms:handling>
+</ms:merge-schema>

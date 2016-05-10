@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:A xmlns:tns="http://www.example.org/SimpleXSD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/SimpleXSD SimpleXSD.xsd ">
+<B/>
+</tns:A>

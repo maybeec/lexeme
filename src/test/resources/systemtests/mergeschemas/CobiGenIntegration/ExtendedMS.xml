@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ms:merge-schema for="root" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../../../main/resources/xsd/merge-schema.xsd ">
+  <ms:definition namespace="http://someExtension.com"/>
+
+  <ms:default-criterion xpath="./@id"/>
+
+  <ms:handling for="a" unique="true" scope-ref="ref" namespace-ref="http://someBase.com">
+    <ms:criterion xpath="true()"/>
+  </ms:handling>
+
+
+</ms:merge-schema>

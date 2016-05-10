@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/FirstXMLSchema" xmlns:tns="http://www.example.org/FirstXMLSchema" elementFormDefault="qualified">
+
+    <element name="A">
+      <complexType>
+        <sequence>
+          <element name="B" minOccurs="1" maxOccurs="unbounded">
+            <complexType>
+              <attribute name="id" type="string"/>
+            </complexType>
+          </element>
+          <element name="C" minOccurs="1" maxOccurs="unbounded">
+            <complexType>
+              <attribute name="id" type="string"/>
+            </complexType>
+          </element>
+        </sequence>
+      </complexType>
+    </element>
+</schema>
