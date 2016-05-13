@@ -24,6 +24,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.maybee.lexeme.ConflictHandlingType;
+import com.github.maybee.lexeme.mergeschema.DefaultCriterionType;
+import com.github.maybee.lexeme.mergeschema.Definition;
+import com.github.maybee.lexeme.mergeschema.MergeSchema;
 
 /**
  * Singleton class
@@ -415,4 +418,25 @@ public class JDom2Util {
 
         return Namespace.getNamespace(arg);
     }
+
+    /**
+     * Initializes the specified MergeSchema, i.e. replaces NullPointers with clean instantiated objects
+     * @param schema
+     *            MergeSchema to be initialized
+     * @author sholzer (May 13, 2016)
+     * @return the speciefied MergeSchema with initialized field
+     */
+    public MergeSchema initializeMergeSchema(MergeSchema schema) {
+        if (schema.getDefinition() == null) {
+            Definition def = new Definition();
+            schema.setDefinition(def);
+        }
+        if (schema.getDefaultCriterion() == null) {
+            DefaultCriterionType crit = new DefaultCriterionType();
+            schema.setDefaultCriterion(crit);
+        }
+
+        return schema;
+    }
+
 }

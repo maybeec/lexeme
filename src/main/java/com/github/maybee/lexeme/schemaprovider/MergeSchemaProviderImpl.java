@@ -17,6 +17,7 @@ import javax.xml.bind.Unmarshaller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.maybee.lexeme.common.util.JDom2Util;
 import com.github.maybee.lexeme.merge.element.matcher.CriterionSet;
 import com.github.maybee.lexeme.mergeschema.AdditionalNamespace;
 import com.github.maybee.lexeme.mergeschema.Criterion;
@@ -107,17 +108,6 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
         refreshMergeSchemaList();
     }
 
-    /**
-     * @param mergeSchemaLocation
-     *            path to the mergeSchemas.
-     * @author sholzer (Sep 15, 2015)
-     */
-    @Deprecated
-    private MergeSchemaProviderImpl(String mergeSchemaLocation) {
-        path = Paths.get(mergeSchemaLocation);
-        refreshMergeSchemaList();
-    }
-
     @Override
     public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
         if (namespaceURI != null) {
@@ -140,7 +130,7 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
             return defaultMergeSchema;
         }
         logger.debug("Returned empty merge schema for namespace {}", namespaceURI);
-        return new MergeSchema();
+        return JDom2Util.getInstance().initializeMergeSchema(new MergeSchema());
     }
 
     /**
