@@ -31,7 +31,7 @@ public class FullFunctionalityTest {
      */
     @Test
     public void ThirdBeanTest() throws Exception {
-        String mergeSchemaLocation = resources + "MergeSchemas";
+        String mergeSchemaLocation = resources + "mergeschemas";
 
         String bean = "http://www.springframework.org/schema/beans";
         String aop = "http://www.springframework.org/schema/aop";
@@ -63,7 +63,7 @@ public class FullFunctionalityTest {
     @Test
     public void ThirdSystemTest() throws Exception {
 
-        String mergeSchemaLocation = resources + "MergeSchemas";
+        String mergeSchemaLocation = resources + "mergeschemas";
 
         Document base = JDom2Util.getInstance().getDocument(resources + "bases/ThirdBase.xml");
         Document patch = JDom2Util.getInstance().getDocument(resources + "bases/ThirdBase.xml");

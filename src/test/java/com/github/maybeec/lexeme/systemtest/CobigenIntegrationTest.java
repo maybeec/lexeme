@@ -42,7 +42,7 @@ public class CobigenIntegrationTest {
      */
     @Test
     public void testAdditionalNamespaceDefinition() throws Exception {
-        final String mergeSchemaLocation = pathRoot + "mergeschemas/CobigenIntegration/";
+        final String mergeSchemaLocation = pathRoot + "mergeschemas/CobiGenIntegration/";
         final String uri = "http://www.example.org/FirstXMLSchema";
         Document base = JDom2Util.getInstance().getDocument(pathRoot + "bases/FirstBase.xml");
         Document patch = JDom2Util.getInstance().getDocument(pathRoot + "patches/FirstPatch.xml");
@@ -76,7 +76,7 @@ public class CobigenIntegrationTest {
      */
     @Test
     public void testExtendedMergeSchema() throws Exception {
-        final String mergeSchemaLocation = pathRoot + "mergeschemas/CobigenIntegration/";
+        final String mergeSchemaLocation = pathRoot + "mergeschemas/CobiGenIntegration/";
         final String baseURI = "http://someBase.com";
         final String extURI = "http://someExtension.com";
 
