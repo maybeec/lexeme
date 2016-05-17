@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.maybee</groupId>
+  <groupId>com.github.maybeec</groupId>
   <artifactId>lexeme</artifactId>
   <packaging>jar</packaging>
 
@@ -13,7 +13,7 @@
     <developer>
       <name>Malte Brunnlieb</name>
       <organization>GitHub</organization>
-      <organizationUrl>https://github.com/may-bee</organizationUrl>
+      <organizationUrl>https://github.com/maybeec</organizationUrl>
     </developer>
     <developer>
       <name>Steffen B. Holzer</name>
@@ -22,16 +22,16 @@
     </developer>
   </developers>
 
-  <url>https://github.com/may-bee/lexeme</url>
+  <url>https://github.com/maybeec/lexeme</url>
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/may-bee/lexeme/issues</url>
+    <url>https://github.com/maybeec/lexeme/issues</url>
   </issueManagement>
 
   <scm>
-    <connection>scm:git:git@github.com:may-bee/lexeme.git</connection>
-    <developerConnection>scm:git:git@github.com:may-bee/lexeme.git</developerConnection>
-    <url>git@github.com:may-bee/lexeme.git</url>
+    <connection>scm:git:git@github.com:maybeec/lexeme.git</connection>
+    <developerConnection>scm:git:git@github.com:maybeec/lexeme.git</developerConnection>
+    <url>git@github.com:maybeec/lexeme.git</url>
   </scm>
 
   <licenses>
@@ -44,7 +44,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <lexeme.gpg.keyname>may-bee@users.noreply.github.com</lexeme.gpg.keyname>
+    <lexeme.gpg.keyname>maybeec@users.noreply.github.com</lexeme.gpg.keyname>
   </properties>
 
   <dependencies>
@@ -145,7 +145,7 @@
             <includeSchema>MergeSchema.xsd</includeSchema>
           </includeSchemas>
           <generateDirectory>${basedir}/src/generated/java</generateDirectory>
-          <generatePackage>com.github.maybee.lexeme.mergeschema</generatePackage>
+          <generatePackage>com.github.maybeec.lexeme.mergeschema</generatePackage>
         </configuration>
       </plugin>
 

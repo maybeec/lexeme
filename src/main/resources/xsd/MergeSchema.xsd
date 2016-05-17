@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://may-bee.github.io/lexeme/mergeschema"
-  xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" elementFormDefault="qualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://maybeec.github.io/lexeme/mergeschema"
+  xmlns:ms="http://maybeec.github.io/lexeme/mergeschema" elementFormDefault="qualified">
 
 
   <complexType name="default-criterion-type">
