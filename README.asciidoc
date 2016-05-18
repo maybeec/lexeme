@@ -5,7 +5,6 @@ image:https://maven-badges.herokuapp.com/maven-central/com.github.maybeec/lexeme
 |===
 |Branch|Build|Coverage
 
-
 |master|image:https://travis-ci.org/maybeec/lexeme.svg?branch=master["Build Status", link="https://travis-ci.org/maybeec/lexeme"]|image:https://coveralls.io/repos/maybeec/lexeme/badge.svg?branch=master[https://coveralls.io/r/maybeec/lexeme?branch=master]
 |development|image:https://travis-ci.org/maybeec/lexeme.svg?branch=development["Build Status", link="https://travis-ci.org/maybeec/lexeme"]|image:https://coveralls.io/repos/maybeec/lexeme/badge.svg?branch=development[https://coveralls.io/r/maybeec/lexeme?branch=development]
 |===
@@ -36,6 +35,21 @@ LeXeMerger merger = LeXeMergerFactory.build("path/to/merge/schemas/");
 
 The merger is now set and ready to merge XMl documents. Depending on the namespace of the documents the algorithm chooses the corresponding merge schema (if one is found).
 [source, java]
-org.jdom2.Document result = merger.merge(org.jdom2.Document baseDoc, org.jdom2.Document patchDoc, c);
+org.jdom2.Document result = merger.merge(org.jdom2.Document baseDoc, org.jdom2.Document patchDoc, ConflictHandlingType c);
 
-Where _c_ is one of the four possible conflict handling types.
+=== Interfaces
+LeXeMe provides multiple interfaces for the `merge()` method using `org.jdom2`, `java.nio.File` and plain `String` objects:
+[source, java]
+org.jdom2.Document merge(Document base, Document patch, ConflictHandlingType c)
+org.jdom2.Element merge(Element base, Element patch, ConflictHandlingType c)
+org.jdom2.Document merge(File base, String patch, String charset, ConflictHandlingType c)
+String mergeInString(File base, String patch, String charset, ConflictHandlingType c)
+
+=== ConflictHandlingTypes
+LeXeMe supports 4 strategies to handle conflicts during the merge process:
+
+|===
+| |Prefere values from Base | Prefere values from Patch
+|No text attachment|BASEOVERWRITE|PATCHOVERWRITE
+|Text attachment|BASEATTACHOROVERWRITE|PATCHATTACHOROVERWRITE
+|===
