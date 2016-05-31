@@ -18,9 +18,6 @@ import org.junit.Test;
 import org.mockito.Matchers;
 import org.mockito.Mockito;
 
-import com.github.maybeec.lexeme.ConflictHandlingType;
-import com.github.maybeec.lexeme.LeXeMeFactory;
-import com.github.maybeec.lexeme.LeXeMerger;
 import com.github.maybeec.lexeme.common.exception.UnmatchingNamespacesException;
 import com.github.maybeec.lexeme.common.exception.XMLMergeException;
 import com.github.maybeec.lexeme.common.util.JDom2Util;
@@ -69,19 +66,19 @@ public class XMLMergerTest {
 
             @Override
             public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
             @Override
             public void setPath(Path path) {
-                // TODO Auto-generated method stub
+                //
 
             }
 
             @Override
             public List<Criterion> getDeepCriterion(String name, String namespace) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
@@ -191,19 +188,19 @@ public class XMLMergerTest {
 
             @Override
             public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
             @Override
             public void setPath(Path path) {
-                // TODO Auto-generated method stub
+                //
 
             }
 
             @Override
             public List<Criterion> getDeepCriterion(String name, String namespace) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
@@ -220,7 +217,7 @@ public class XMLMergerTest {
 
             @Override
             public ElementMerger build(List<Handling> scope, Handling handling, MergeSchemaProvider provider) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
@@ -247,6 +244,10 @@ public class XMLMergerTest {
  */
 class ElementMergerStub implements ElementMerger {
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public void setRoot(boolean b) {
 
@@ -257,6 +258,10 @@ class ElementMergerStub implements ElementMerger {
      */
     boolean earlyExit = false;
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public org.jdom2.Element merge(org.jdom2.Element element1, org.jdom2.Element element2,
         ConflictHandlingType type) throws XMLMergeException {

@@ -52,6 +52,10 @@ public class ElementComparatorImpl implements ElementComparator {
 
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public boolean compare(Element element1, Element element2) throws ElementsCantBeMergedException {
         if (!element1.getName().equals(element2.getName())) {

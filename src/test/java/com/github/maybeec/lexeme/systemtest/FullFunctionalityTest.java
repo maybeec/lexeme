@@ -68,9 +68,7 @@ public class FullFunctionalityTest {
         Document base = JDom2Util.getInstance().getDocument(resources + "bases/ThirdBase.xml");
         Document patch = JDom2Util.getInstance().getDocument(resources + "bases/ThirdBase.xml");
         LeXeMerger testMerger = new LeXeMerger(mergeSchemaLocation);
-        Element result =
-            testMerger.merge(base.getRootElement(), patch.getRootElement(),
-                ConflictHandlingType.PATCHOVERWRITE);
+        testMerger.merge(base.getRootElement(), patch.getRootElement(), ConflictHandlingType.PATCHOVERWRITE);
     }
 
 }

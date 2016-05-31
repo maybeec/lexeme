@@ -13,8 +13,6 @@ import com.github.maybeec.lexeme.mergeschema.Criterion;
 import com.github.maybeec.lexeme.mergeschema.Definition;
 import com.github.maybeec.lexeme.mergeschema.MergeSchema;
 import com.github.maybeec.lexeme.schemaprovider.MergeSchemaProvider;
-import com.github.maybeec.lexeme.validator.DocumentValidator;
-import com.github.maybeec.lexeme.validator.DocumentValidatorImpl;
 
 /**
  *
@@ -59,19 +57,19 @@ public class DocValImplTest {
 
             @Override
             public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
             @Override
             public void setPath(Path path) {
-                // TODO Auto-generated method stub
+                //
 
             }
 
             @Override
             public List<Criterion> getDeepCriterion(String name, String namespace) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
@@ -117,13 +115,13 @@ public class DocValImplTest {
 
             @Override
             public void setPath(Path path) {
-                // TODO Auto-generated method stub
+                //
 
             }
 
             @Override
             public List<Criterion> getDeepCriterion(String name, String namespace) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
@@ -164,19 +162,19 @@ public class DocValImplTest {
 
             @Override
             public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
             @Override
             public void setPath(Path path) {
-                // TODO Auto-generated method stub
+                //
 
             }
 
             @Override
             public List<Criterion> getDeepCriterion(String name, String namespace) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
@@ -217,19 +215,18 @@ public class DocValImplTest {
 
             @Override
             public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
             @Override
             public void setPath(Path path) {
-                // TODO Auto-generated method stub
 
             }
 
             @Override
             public List<Criterion> getDeepCriterion(String name, String namespace) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
@@ -277,19 +274,19 @@ public class DocValImplTest {
 
             @Override
             public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 
             @Override
             public void setPath(Path path) {
-                // TODO Auto-generated method stub
+                //
 
             }
 
             @Override
             public List<Criterion> getDeepCriterion(String name, String namespace) {
-                // TODO Auto-generated method stub
+                //
                 return null;
             }
 

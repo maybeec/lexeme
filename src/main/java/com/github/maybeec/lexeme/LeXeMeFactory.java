@@ -70,11 +70,19 @@ public final class LeXeMeFactory {
      */
     static final class GenericLexemeBuilder implements LeXeMeBuilder {
 
+        /**
+         * {@inheritDoc}
+         * @author sholzer (May 31, 2016)
+         */
         @Override
         public LeXeMerger build(MergeSchemaProvider provider) {
             return new LeXeMerger(provider);
         }
 
+        /**
+         * {@inheritDoc}
+         * @author sholzer (May 31, 2016)
+         */
         @Override
         public LeXeMerger build(String pathToMergeSchema) {
             return new LeXeMerger(pathToMergeSchema);

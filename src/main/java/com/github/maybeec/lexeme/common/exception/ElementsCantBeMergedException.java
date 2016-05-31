@@ -1,6 +1,5 @@
 package com.github.maybeec.lexeme.common.exception;
 
-
 /**
  * An exception thrown if it's tried to merge two elements who can't be merged (i.e. different element tags)
  * @author sholzer (11.02.2015)
@@ -13,7 +12,7 @@ public class ElementsCantBeMergedException extends XMLMergeException {
      * @author sholzer (21.04.2015)
      */
     public ElementsCantBeMergedException(String string) {
-        // TODO Auto-generated constructor stub
+        //
     }
 
     /**

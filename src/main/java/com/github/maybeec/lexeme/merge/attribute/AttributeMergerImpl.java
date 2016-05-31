@@ -38,6 +38,10 @@ public class AttributeMergerImpl implements AttributeMerger {
         return attribute;
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public String merge(String base, String patch, ConflictHandlingType conflictHandling) {
 

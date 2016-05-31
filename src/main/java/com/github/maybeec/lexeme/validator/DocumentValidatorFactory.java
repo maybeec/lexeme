@@ -53,6 +53,10 @@ public final class DocumentValidatorFactory {
      */
     static final class GenericDocumentValidatorBuilder implements DocumentValidatorBuilder {
 
+        /**
+         * {@inheritDoc}
+         * @author sholzer (31.05.2016)
+         */
         @Override
         public DocumentValidator build(MergeSchemaProvider provider) {
             return new DocumentValidatorImpl(provider);

@@ -129,6 +129,10 @@ public class ElementMergerImpl implements ElementMerger {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public Element merge(Element element1, Element element2, ConflictHandlingType conflictHandling)
         throws XMLMergeException {
@@ -141,8 +145,8 @@ public class ElementMergerImpl implements ElementMerger {
         final boolean useBaseText = conflictHandling.isBasePrefering() || attachableText;
         final boolean usePatchText = !conflictHandling.isBasePrefering() || attachableText;
 
-        logger.debug("{}:Text nodes from base will be {}used", logId, (useBaseText ? "" : "not "));
-        logger.debug("{}:Text nodes from patch will be {}used", logId, (usePatchText ? "" : "not "));
+        logger.debug("{}:Text nodes from base will {}be used", logId, (useBaseText ? "" : "not "));
+        logger.debug("{}:Text nodes from patch will {}be used", logId, (usePatchText ? "" : "not "));
 
         if (!useBaseText) {
             for (Iterator<Content> iterator = element1.getContent().iterator(); iterator.hasNext();) {
@@ -195,7 +199,7 @@ public class ElementMergerImpl implements ElementMerger {
             state = RelativeState.EMPTYBASE;
         }
         logger.debug("{} is in state {}", logId, state.name());
-        // If the base is empty // TODO what if the base contains Texts
+        // If the base is empty //
         if (state.equals(RelativeState.EMPTYBASE)) {
             for (Content node : element2.getContent()) {
                 if (node instanceof Text) {

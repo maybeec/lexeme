@@ -17,6 +17,10 @@ class ValidationErrorHandler implements ErrorHandler {
      */
     private final Logger logger = LoggerFactory.getLogger(ValidationErrorHandler.class);
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public void error(SAXParseException arg0) throws SAXException {
         if (arg0.getCause() != null) {
@@ -25,6 +29,10 @@ class ValidationErrorHandler implements ErrorHandler {
         throw arg0;
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public void fatalError(SAXParseException arg0) throws SAXException {
         if (arg0.getCause() != null) {
@@ -33,6 +41,10 @@ class ValidationErrorHandler implements ErrorHandler {
         throw arg0;
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public void warning(SAXParseException arg0) throws SAXException {
         logger.warn(arg0.getMessage());

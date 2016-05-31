@@ -108,6 +108,10 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
         refreshMergeSchemaList();
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
         if (namespaceURI != null) {
@@ -216,11 +220,19 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
 
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public String getPath() {
         return path.toString();
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public Criterion getDefaultCriterion(String namespaceUri) {
         Criterion result = new Criterion();
@@ -238,6 +250,10 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
         return result;
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
         List<Criterion> result = new LinkedList<>();
@@ -259,12 +275,20 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
 
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public void setPath(Path path) {
         this.path = path;
 
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public List<Criterion> getDeepCriterion(String name, String namespace) {
         CriterionSet retrievedCriterionSet = criterionSets.get(namespace);

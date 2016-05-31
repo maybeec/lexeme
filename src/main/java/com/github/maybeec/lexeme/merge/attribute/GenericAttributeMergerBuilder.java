@@ -8,6 +8,10 @@ import com.github.maybeec.lexeme.mergeschema.Attribute;
  */
 public final class GenericAttributeMergerBuilder implements AttributeMergerBuilder {
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public AttributeMerger build(Attribute attribute) {
         return new AttributeMergerImpl(attribute);

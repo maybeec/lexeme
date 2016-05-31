@@ -76,11 +76,19 @@ public final class ElementMergerFactory {
      */
     static final class GenericElementMergerBuilder implements ElementMergerBuilder {
 
+        /**
+         * {@inheritDoc}
+         * @author sholzer (May 31, 2016)
+         */
         @Override
         public ElementMerger build(Handling handling, MergeSchemaProvider provider) {
             return new ElementMergerImpl(handling, provider);
         }
 
+        /**
+         * {@inheritDoc}
+         * @author sholzer (May 31, 2016)
+         */
         @Override
         public ElementMerger build(List<Handling> scope, Handling handling, MergeSchemaProvider provider) {
             return new ElementMergerImpl(handling, scope, provider);

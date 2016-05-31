@@ -15,10 +15,19 @@ import com.github.maybeec.lexeme.schemaprovider.MergeSchemaProviderImpl;
  */
 public class MergeSchemaProviderImplTest {
 
+    /**
+     * Path the provider should look at
+     */
     private String path = "src/test/resources/provider";
 
+    /**
+     * namespace
+     */
     private String namespaceA = "a";
 
+    /**
+     * default namespace
+     */
     private String namespaceDefault = "$DEFAULT$";
 
     /**

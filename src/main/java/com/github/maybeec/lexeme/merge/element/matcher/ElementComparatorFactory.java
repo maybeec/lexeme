@@ -58,6 +58,10 @@ public final class ElementComparatorFactory {
      */
     static final class GenericElementComparatorBuilder implements ElementComparatorBuilder {
 
+        /**
+         * {@inheritDoc}
+         * @author sholzer (May 31, 2016)
+         */
         @Override
         public ElementComparator build(List<Criterion> criterionList, MergeSchemaProvider provider) {
             return new ElementComparatorImpl(criterionList, provider);

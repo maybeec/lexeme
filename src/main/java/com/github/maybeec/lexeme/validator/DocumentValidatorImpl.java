@@ -65,6 +65,10 @@ public class DocumentValidatorImpl implements DocumentValidator {
         this.provider = provider;
     }
 
+    /**
+     * {@inheritDoc}
+     * @author sholzer (May 31, 2016)
+     */
     @Override
     public void validate(Element node) throws ValidationException {
 
