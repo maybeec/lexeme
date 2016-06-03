@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ms:merge-schema for="" xmlns:ms="http://maybeec.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maybeec.github.io/lexeme/mergeschema ../../../main/resources/xsd/MergeSchema.xsd ">
+  <ms:definition namespace="a"/>
+  <ms:default-criterion xpath="abc"/>
+
+</ms:merge-schema>

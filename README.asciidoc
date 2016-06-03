@@ -1,0 +1,55 @@
+= LeXeMerger
+
+image:https://maven-badges.herokuapp.com/maven-central/com.github.maybeec/lexeme/badge.svg?style=flat-square[https://maven-badges.herokuapp.com/maven-central/com.github.maybeec/lexeme/]
+
+|===
+|Branch|Build|Coverage
+
+|master|image:https://travis-ci.org/maybeec/lexeme.svg?branch=master["Build Status", link="https://travis-ci.org/maybeec/lexeme"]|image:https://coveralls.io/repos/maybeec/lexeme/badge.svg?branch=master[https://coveralls.io/r/maybeec/lexeme?branch=master]
+|development|image:https://travis-ci.org/maybeec/lexeme.svg?branch=development["Build Status", link="https://travis-ci.org/maybeec/lexeme"]|image:https://coveralls.io/repos/maybeec/lexeme/badge.svg?branch=development[https://coveralls.io/r/maybeec/lexeme?branch=development]
+|===
+
+== Description
+The Language-aware XML Merger (for short LeXeMe) is a 2-way XML merger that allows to influence the structural merge by declaring additional structural information. Therefore, a so called _merge schema_ can be specified for each namespace, which itself is a XML document that will be parsed and used by LeXeMe as an additional input for the structural merge.
+
+== Features
+A merge schema allows to specify ...
+
+* ... what properties of a XML element should be considered while matching elements from the base with elements from the patch
+* ... XML elements can or should occur only once or more often as children of a specific XML node
+* ... whether the value of an attribute of the patch is allowed to be attached to the base value or not
+* ... whether the textual content of an XML node of the patch is allowed to be attached to the base textual content or not
+* ... different merge rules (called _handlings_) depending on the XML elements location in the DOM node tree
+
+LeXeMe is able to ...
+
+* ... perform four conflict handlings (override with patch's or base's contents as well as attaching attributes and text contents when it's desired or not)
+* ... optionally validate the merge result
+
+== Usage
+The api of the LeXeMe library is the `LeXeMerger` class.
+
+To instanciate a merger you need to specify a folder in that LeXeMe will search for _merge schemas_. The merge process will use default settings for each namespace that has no _merge schema_ in that folder.
+[source, java]
+LeXeMerger merger = LeXeMergerFactory.build("path/to/merge/schemas/");
+
+The merger is now set and ready to merge XMl documents. Depending on the namespace of the documents the algorithm chooses the corresponding merge schema (if one is found).
+[source, java]
+org.jdom2.Document result = merger.merge(org.jdom2.Document baseDoc, org.jdom2.Document patchDoc, ConflictHandlingType c);
+
+=== Interfaces
+LeXeMe provides multiple interfaces for the `merge()` method using `org.jdom2`, `java.nio.File` and plain `String` objects:
+[source, java]
+org.jdom2.Document merge(Document base, Document patch, ConflictHandlingType c)
+org.jdom2.Element merge(Element base, Element patch, ConflictHandlingType c)
+org.jdom2.Document merge(File base, String patch, String charset, ConflictHandlingType c)
+String mergeInString(File base, String patch, String charset, ConflictHandlingType c)
+
+=== ConflictHandlingTypes
+LeXeMe supports 4 strategies to handle conflicts during the merge process:
+
+|===
+| |Prefere values from Base | Prefere values from Patch
+|No text attachment|BASEOVERWRITE|PATCHOVERWRITE
+|Text attachment|BASEATTACHOROVERWRITE|PATCHATTACHOROVERWRITE
+|===

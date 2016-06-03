@@ -1,16 +1,50 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.github.maybee</groupId>
+  <groupId>com.github.maybeec</groupId>
   <artifactId>lexeme</artifactId>
   <packaging>jar</packaging>
 
-  <name>[LeXeMe] Language-aware XML Merger</name>
-  <version>0.0.1-SNAPSHOT</version>
-  <description>Tool for language-aware aggregation of XML documents</description>
+  <name>LeXeMe - Language-aware XML Merger</name>
+  <version>1.0.0</version>
+  <description>Tool for language-aware 2-way merging of XML documents</description>
+
+  <developers>
+    <developer>
+      <name>Malte Brunnlieb</name>
+      <organization>GitHub</organization>
+      <organizationUrl>https://github.com/maybeec</organizationUrl>
+    </developer>
+    <developer>
+      <name>Steffen B. Holzer</name>
+      <organization>GitHub</organization>
+      <organizationUrl>https://github.com/themetalone</organizationUrl>
+    </developer>
+  </developers>
+
+  <url>https://github.com/maybeec/lexeme</url>
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/maybeec/lexeme/issues</url>
+  </issueManagement>
+
+  <scm>
+    <connection>scm:git:git@github.com:maybeec/lexeme.git</connection>
+    <developerConnection>scm:git:git@github.com:maybeec/lexeme.git</developerConnection>
+    <url>git@github.com:maybeec/lexeme.git</url>
+  </scm>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <lexeme.gpg.keyname>maybeec@users.noreply.github.com</lexeme.gpg.keyname>
   </properties>
 
   <dependencies>
@@ -75,30 +109,6 @@
         <version>2.4.2</version>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
         <version>1.4</version>
@@ -135,32 +145,103 @@
             <includeSchema>MergeSchema.xsd</includeSchema>
           </includeSchemas>
           <generateDirectory>${basedir}/src/generated/java</generateDirectory>
-          <generatePackage>io.github.maybee.lexeme.mergeschema</generatePackage>
+          <generatePackage>com.github.maybeec.lexeme.mergeschema</generatePackage>
         </configuration>
+      </plugin>
+
+      <!-- Code Coverage Analysis -->
+      <plugin>
+        <groupId>org.eluder.coveralls</groupId>
+        <artifactId>coveralls-maven-plugin</artifactId>
+        <version>4.1.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.6.201602180812</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
 
-  <developers>
-    <developer>
-      <name>Malte Brunnlieb</name>
-    </developer>
-    <developer>
-      <name>Steffen Holzer</name>
-    </developer>
-  </developers>
-
-  <url>https://github.com/may-bee/lexeme</url>
-  <issueManagement>
-    <url>https://github.com/may-bee/lexeme/issues</url>
-  </issueManagement>
-
-  <licenses>
-    <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <!-- also generate javadoc/sources JARs -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <!-- Sign artifacts with PGP -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <configuration>
+              <keyname>${lexeme.gpg.keyname}</keyname>
+            </configuration>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.3</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+      
+      <distributionManagement>
+        <snapshotRepository>
+          <id>ossrh</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+          <id>ossrh</id>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+      </distributionManagement>
+    </profile>
+  </profiles>
 </project>

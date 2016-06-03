@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ms:merge-schema for="beans" xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../xsd/merge-schema.xsd ">
-	<!-- merge-schema for spring bean documents. Patch document will be favored over base document -->
-  <ms:definition namespace="http://www.springframework.org/schema/beans"/>
+<ms:merge-schema for="beans" xmlns:ms="http://maybeec.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maybeec.github.io/lexeme/mergeschema ../xsd/MergeSchema.xsd ">
+	<ms:definition namespace="http://www.springframework.org/schema/beans"/>
 
   <ms:default-criterion xpath="true()"/>
 
-  <ms:handling for="description" type="unique">
+  <ms:handling for="description" unique="true">
   	<ms:criterion xpath="true()"/>
+  </ms:handling>
+  <ms:handling for="entry">
+    <ms:criterion xpath="./@key" />
+    <ms:handling for="key" unique="true"><ms:criterion xpath="true()"/></ms:handling>
   </ms:handling>
   <ms:handling for="import">
     <ms:criterion xpath="true()"/>
@@ -16,13 +19,13 @@
   </ms:handling>
 
   <ms:handling for="bean" label="refListOrSetType">
-    <ms:criterion xpath="./@name"/>
-  	<!-- handling for description from the axis above -->
+    <ms:criterion xpath="./@*[name() = 'id' or name()='name']/text()"/>
+  	<!-- Handling for description from the axis above -->
   	<ms:handling for="constructor-arg">
       <ms:criterion xpath="./@name"/>
   	</ms:handling>
 
-    <ms:handling for="propertyType">
+    <ms:handling for="property">
       <ms:criterion xpath="./@name"/>
     </ms:handling>
 
@@ -41,36 +44,38 @@
       </ms:handling>
     </ms:handling>
 
-    <!-- shared handlings -->
-    <ms:handling for="ref" type="unique">
-      <ms:criterion xpath="true()"/>
-    </ms:handling>
-    <ms:handling for="idref"  type="unique">
-      <ms:criterion xpath="true()"/>
-    </ms:handling>
-    <ms:handling for="value" type="unique">
-      <ms:criterion xpath="true()"/>
-    </ms:handling>
-    <ms:handling for="null"  type="unique">
-      <ms:criterion xpath="true()"/>
-    </ms:handling>
-    <ms:handling for="array" type="unique">
-      <ms:criterion xpath="true()"/>
-    </ms:handling>
-    <ms:handling for="list" type="unique">
-      <ms:criterion xpath="true()"/>
-    </ms:handling>
-    <ms:handling for="set" type="unique">
-    <ms:criterion xpath="true()"/>
-    </ms:handling>
-    <ms:handling for="map" type="unique">
-    <ms:criterion xpath="true()"/>
-    </ms:handling>
-    <ms:handling for="props" type="unique">
-    <ms:criterion xpath="true()"/>
-    </ms:handling>
 
-  </ms:handling> <!-- End handling for bean -->
+
+  </ms:handling> <!-- End Handling for bean -->
+
+  <!-- shared Handlings -->
+    <ms:handling for="ref" unique="true">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="idref"  unique="true">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="value" unique="true">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="null"  unique="true">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="array" unique="true">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="list" unique="true">
+      <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="set" unique="true">
+    <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="map" unique="true" label="map">
+    <ms:criterion xpath="true()"/>
+    </ms:handling>
+    <ms:handling for="props" unique="true">
+    <ms:criterion xpath="true()"/>
+    </ms:handling>
 
   <ms:handling for="meta">
   	<ms:criterion xpath="./@key"/>

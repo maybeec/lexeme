@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ms:merge-schema xmlns:ms="http://may-bee.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://may-bee.github.io/lexeme/mergeschema ../../../main/resources/xsd/merge-schema.xsd ">
+<ms:merge-schema xmlns:ms="http://maybeec.github.io/lexeme/mergeschema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maybeec.github.io/lexeme/mergeschema ../../../main/resources/xsd/merge-schema.xsd ">
   <ms:definition location="" type="dtd"/>
   <ms:definition location="" type="xsd"/>
 </ms:merge-schema>
