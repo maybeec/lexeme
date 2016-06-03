@@ -6,7 +6,7 @@
   <packaging>jar</packaging>
 
   <name>LeXeMe - Language-aware XML Merger</name>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <description>Tool for language-aware 2-way merging of XML documents</description>
 
   <developers>
@@ -173,7 +173,7 @@
 
   <profiles>
     <profile>
-      <id>deploy</id>
+      <id>release</id>
       <build>
         <plugins>
           <!-- also generate javadoc/sources JARs -->
@@ -206,7 +206,7 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
             <configuration>
-              <keyname>${oasp.gpg.keyname}</keyname>
+              <keyname>${lexeme.gpg.keyname}</keyname>
             </configuration>
             <executions>
               <execution>
@@ -218,8 +218,20 @@
               </execution>
             </executions>
           </plugin>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.3</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
+      
       <distributionManagement>
         <snapshotRepository>
           <id>ossrh</id>
