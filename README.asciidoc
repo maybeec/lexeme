@@ -12,6 +12,16 @@ image:https://maven-badges.herokuapp.com/maven-central/com.github.maybeec/lexeme
 == Description
 The Language-aware XML Merger (for short LeXeMe) is a 2-way XML merger that allows to influence the structural merge by declaring additional structural information. Therefore, a so called _merge schema_ can be specified for each namespace, which itself is a XML document that will be parsed and used by LeXeMe as an additional input for the structural merge.
 
+== Maven usage
+[source, xml]
+<dependencies>
+  <dependency>
+    <groupId>com.github.maybeec</groupId>
+    <artifactId>lexeme</artifactId>
+    <version>1.0.0</version>
+  </dependency>
+<dependencies>
+
 == Features
 A merge schema allows to specify ...
 
