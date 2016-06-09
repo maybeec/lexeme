@@ -5,8 +5,8 @@ image:https://maven-badges.herokuapp.com/maven-central/com.github.maybeec/lexeme
 |===
 |Branch|Build|Coverage
 
-|master|image:https://travis-ci.org/maybeec/lexeme.svg?branch=master["Build Status", link="https://travis-ci.org/maybeec/lexeme"]|image:https://coveralls.io/repos/maybeec/lexeme/badge.svg?branch=master[https://coveralls.io/r/maybeec/lexeme?branch=master]
-|development|image:https://travis-ci.org/maybeec/lexeme.svg?branch=development["Build Status", link="https://travis-ci.org/maybeec/lexeme"]|image:https://coveralls.io/repos/maybeec/lexeme/badge.svg?branch=development[https://coveralls.io/r/maybeec/lexeme?branch=development]
+|master|image:https://travis-ci.org/maybeec/lexeme.svg?branch=master["Build Status", link="https://travis-ci.org/maybeec/lexeme"]|image:https://coveralls.io/repos/maybeec/lexeme/badge.svg?branch=master[link=https://coveralls.io/r/maybeec/lexeme?branch=master]
+|development|image:https://travis-ci.org/maybeec/lexeme.svg?branch=development["Build Status", link="https://travis-ci.org/maybeec/lexeme"]|image:https://coveralls.io/repos/maybeec/lexeme/badge.svg?branch=development[link=https://coveralls.io/r/maybeec/lexeme?branch=development]
 |===
 
 == Description
