@@ -10,21 +10,19 @@
 
   <complexType name="handling">
     <sequence>
-      <element name="criterion" type="ms:criterion" maxOccurs="unbounded" minOccurs="0">
-      </element>
-      <element name="handling" type="ms:handling" maxOccurs="unbounded" minOccurs="0">
-      </element>
-      <element name="attribute" type="ms:attribute" maxOccurs="unbounded" minOccurs="0">
-      </element>
+      <element name="criterion" type="ms:criterion" maxOccurs="unbounded" minOccurs="0"></element>
+      <element name="handling" type="ms:handling" maxOccurs="unbounded" minOccurs="0"></element>
+      <element name="attribute" type="ms:attribute" maxOccurs="unbounded" minOccurs="0"></element>
     </sequence>
     <attribute name="for" type="string" use="required"></attribute>
     <attribute name="unique" type="boolean" use="optional" default="false"></attribute>
     <attribute name="where" type="ms:xpath" use="optional" default="true()"></attribute>
-    <attribute name="scope-ref" type="string" use="optional" default=""/>
-    <attribute name="namespace-ref" type="string" use="optional" default=""/>
-    <attribute name="label" type="string" use="optional" default=""/>
-    <attribute name="attachable-text" type="boolean" use="optional" default="false"/>
+    <attribute name="scope-ref" type="string" use="optional" default="" />
+    <attribute name="namespace-ref" type="string" use="optional" default="" />
+    <attribute name="label" type="string" use="optional" default="" />
+    <attribute name="attachable-text" type="boolean" use="optional" default="false" />
 
+    <attribute name="is-leaf" type="boolean" use="optional" default="false"></attribute>
   </complexType>
 
   <complexType name="merge-schema">
