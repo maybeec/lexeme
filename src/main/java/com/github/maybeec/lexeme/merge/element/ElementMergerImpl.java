@@ -388,7 +388,7 @@ public class ElementMergerImpl implements ElementMerger {
                 e.getMessage());
 
             logger.error(message);
-            throw new ElementsCantBeMergedException(message);
+            throw new ElementsCantBeMergedException(message, e);
         }
     }
 

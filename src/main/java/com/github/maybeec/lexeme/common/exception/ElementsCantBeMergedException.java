@@ -7,19 +7,52 @@ package com.github.maybeec.lexeme.common.exception;
 public class ElementsCantBeMergedException extends XMLMergeException {
 
     /**
-     * @param string
-     *            the message describing the cause of the Exception
-     * @author sholzer (21.04.2015)
+     * Create a new ElementsCantBeMergedException.
      */
-    public ElementsCantBeMergedException(String string) {
-        //
+    public ElementsCantBeMergedException() {
+        super();
     }
 
     /**
+     * Create a new ElementsCantBeMergedException wrapping an existing exception.
      *
-     * @author sholzer (21.04.2015)
+     * <p>
+     * The existing exception will be embedded in the new one, and its message will become the default message
+     * for the ElementsCantBeMergedException.
+     * </p>
+     *
+     * @param e
+     *            The exception to be wrapped in a ElementsCantBeMergedException.
      */
-    public ElementsCantBeMergedException() {
+    public ElementsCantBeMergedException(Exception e) {
+        super(e);
+    }
+
+    /**
+     * Create a new ElementsCantBeMergedException.
+     *
+     * @param message
+     *            The error or warning message.
+     */
+    public ElementsCantBeMergedException(String message) {
+        super(message);
+    }
+
+    /**
+     * Create a new ElementsCantBeMergedException from an existing exception.
+     *
+     * <p>
+     * The existing exception will be embedded in the new one, but the new exception will have its own
+     * message.
+     * </p>
+     *
+     * @param message
+     *            The detail message.
+     * @param e
+     *            The exception to be wrapped in a ElementsCantBeMergedException.
+     */
+    public ElementsCantBeMergedException(String message, Exception e) {
+        super(message, e);
     }
 
     /**
