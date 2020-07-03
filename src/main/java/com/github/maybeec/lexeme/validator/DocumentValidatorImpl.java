@@ -120,6 +120,7 @@ public class DocumentValidatorImpl implements DocumentValidator {
             DocumentBuilder db = dbf.newDocumentBuilder();
             db.setErrorHandler(new ValidationErrorHandler());
             db.parse(inputSource);
+            stringReader.close();
         } catch (SAXException e) {
             logger.warn("Validation failed due to: {}\n{}", e.getMessage(), node.toString());
             if (strict) {
