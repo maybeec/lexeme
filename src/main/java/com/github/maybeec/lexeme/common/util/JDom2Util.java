@@ -37,8 +37,7 @@ public class JDom2Util {
     /**
      * Convenient constant
      */
-    public static final Namespace XSI = Namespace.getNamespace("xsi",
-        "http://www.w3.org/2001/XMLSchema-instance");
+    public static final Namespace XSI = Namespace.getNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
 
     /**
      * Used for logging events of this object
@@ -328,12 +327,16 @@ public class JDom2Util {
         List<String> secondList;
         switch (conflictHandling) {
         default:
+        case BASEATTACHOROVERWRITEVALIDATE:
         case BASEATTACHOROVERWRITE:
+        case BASEOVERWRITEVALIDATE:
         case BASEOVERWRITE:
             firstList = patchList;
             secondList = baseList;
             break;
+        case PATCHATTACHOROVERWRITEVALIDATE:
         case PATCHATTACHOROVERWRITE:
+        case PATCHOVERWRITEVALIDATE:
         case PATCHOVERWRITE:
             firstList = baseList;
             secondList = patchList;
