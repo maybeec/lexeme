@@ -162,8 +162,7 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
                 for (Path p : dir) {
                     if (!Files.isDirectory(p) && p.toFile().lastModified() > lastModification) {
                         modification =
-                            (modification <= p.toFile().lastModified() ? p.toFile().lastModified()
-                                : modification);
+                            (modification <= p.toFile().lastModified() ? p.toFile().lastModified() : modification);
                         MergeSchema loadedSchema = loadMergeSchema(p);
                         if (loadedSchema.getDefinition().getNamespace().equals(defaultMergeSchemaIdentifier)) {
                             defaultMergeSchema = loadedSchema;
@@ -171,19 +170,18 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
                             continue;
                         }
                         mergeSchemaList.add(loadedSchema);
-                        logger.debug("Found MergeSchema for {} @ {}", loadedSchema.getDefinition()
-                            .getNamespace(), p.toString());
+                        logger.debug("Found MergeSchema for {} @ {}", loadedSchema.getDefinition().getNamespace(),
+                            p.toString());
                     }
                 }
             } else {
                 if (path.toFile().lastModified() > lastModification) {
                     modification =
-                        (modification <= path.toFile().lastModified() ? path.toFile().lastModified()
-                            : modification);
+                        (modification <= path.toFile().lastModified() ? path.toFile().lastModified() : modification);
                     MergeSchema loadedSchema = loadMergeSchema(path);
                     mergeSchemaList.add(loadedSchema);
-                    logger.debug("Found MergeSchema for {} @ {}",
-                        loadedSchema.getDefinition().getNamespace(), path.toString());
+                    logger.debug("Found MergeSchema for {} @ {}", loadedSchema.getDefinition().getNamespace(),
+                        path.toString());
                 }
             }
             lastModification = modification;
@@ -193,8 +191,7 @@ public class MergeSchemaProviderImpl implements MergeSchemaProvider {
                 e.printStackTrace();
             }
         } finally {
-            logger.debug("Files in {} are last modified at {}", path.toString(), new java.util.Date(
-                lastModification));
+            logger.debug("Files in {} are last modified at {}", path.toString(), new java.util.Date(lastModification));
         }
 
     }
