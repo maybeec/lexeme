@@ -113,9 +113,7 @@ public class DocumentValidatorImpl implements DocumentValidator {
         if (!schemas.isEmpty()) {
             dbf.setAttribute(JAXP_SCHEMA_SOURCE, schemas.toArray());
         }
-        StringReader stringReader;
-        try {
-            stringReader = new StringReader(JDom2Util.getInstance().parseString(node));
+        try (StringReader stringReader = new StringReader(JDom2Util.getInstance().parseString(node))) {
             InputSource inputSource = new InputSource(stringReader);
             DocumentBuilder db = dbf.newDocumentBuilder();
             db.setErrorHandler(new ValidationErrorHandler());

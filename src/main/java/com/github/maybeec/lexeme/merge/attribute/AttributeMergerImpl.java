@@ -53,18 +53,22 @@ public class AttributeMergerImpl implements AttributeMerger {
         }
 
         switch (conflictHandling) {
+        case BASEATTACHOROVERWRITEVALIDATE:
         case BASEATTACHOROVERWRITE:
             if (attribute.isAttachable()) {
                 return base + attribute.getSeparationString() + patch;
             }
             //$FALL-THROUGH$
+        case BASEOVERWRITEVALIDATE:
         case BASEOVERWRITE:
             return base;
+        case PATCHATTACHOROVERWRITEVALIDATE:
         case PATCHATTACHOROVERWRITE:
             if (attribute.isAttachable()) {
                 return base + attribute.getSeparationString() + patch;
             }
             //$FALL-THROUGH$
+        case PATCHOVERWRITEVALIDATE:
         case PATCHOVERWRITE:
             return patch;
         default:
