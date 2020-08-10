@@ -160,11 +160,11 @@
         </executions>
         <configuration>
           <schemaDirectory>${basedir}/src/main/resources/xsd</schemaDirectory>
-          <outputDirectory>${basedir}/src/generated/java</outputDirectory>
+          <outputDirectory>${project.build.directory}/generated-sources/java</outputDirectory>
           <includeSchemas>
             <includeSchema>MergeSchema.xsd</includeSchema>
           </includeSchemas>
-          <generateDirectory>${basedir}/src/generated/java</generateDirectory>
+          <generateDirectory>${project.build.directory}/generated-sources/java</generateDirectory>
           <generatePackage>com.github.maybeec.lexeme.mergeschema</generatePackage>
         </configuration>
       </plugin>
