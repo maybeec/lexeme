@@ -63,8 +63,8 @@
       <artifactId>jaxen</artifactId>
       <version>1.2.0</version>
     </dependency>
-    
-    
+
+
     <!-- Needed for JDK 9+ -->
     <dependency>
       <groupId>javax.xml.bind</groupId>
@@ -80,9 +80,9 @@
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
       <version>2.3.2</version>
-    </dependency>    
+    </dependency>
     <!-- END JDK 9 -->
-    
+
 
     <!-- SL4j logging -->
     <dependency>
@@ -188,6 +188,23 @@
           </execution>
         </executions>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <source>8</source>
+              <excludePackageNames>com.github.maybeec.lexeme.mergeschema</excludePackageNames>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -197,18 +214,6 @@
       <build>
         <plugins>
           <!-- also generate javadoc/sources JARs -->
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                  <goal>jar</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
@@ -251,7 +256,7 @@
           </plugin>
         </plugins>
       </build>
-      
+
       <distributionManagement>
         <snapshotRepository>
           <id>ossrh</id>

@@ -35,14 +35,9 @@ public class ElementComparatorImpl implements ElementComparator {
     private MergeSchemaProvider provider;
 
     /**
-     * Stores the XPathExpression objects created during creation of this object
-     */
-    // private List<XPathExpression<Object>> xpathList;
-
-    /**
      * Initializes the object with a List of Criterion objects used to compare two elements
      * @param criterionList
-     *            {@link List}&lt;{@link Criterion}>
+     *            {@link List}&lt;{@link Criterion}&gt;
      * @param provider
      *            provides the matching with namespace dependent information
      */
@@ -52,10 +47,6 @@ public class ElementComparatorImpl implements ElementComparator {
 
     }
 
-    /**
-     * {@inheritDoc}
-     * @author sholzer (May 31, 2016)
-     */
     @Override
     public boolean compare(Element element1, Element element2) throws ElementsCantBeMergedException {
         if (!element1.getName().equals(element2.getName())) {

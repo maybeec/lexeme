@@ -68,7 +68,7 @@ public class LeXeMerger {
      * @param pathToMergeSchema
      *            String representing the path to a folder in which merge schemas are stored. This merge
      *            schemas will be used during the merge process.
-     *            <p/>
+     *            
      *            If <b>null</b> the execution path will be used
      * @author sholzer (12.03.2015)
      */
@@ -84,7 +84,7 @@ public class LeXeMerger {
      * @param pathToMergeSchema
      *            the path to a folder in which merge schemas are stored. This merge schemas will be used
      *            during the merge process.
-     *            <p/>
+     *            
      *            If <b>null</b> the execution path will be used
      * @author sholzer (12.03.2015)
      */
@@ -103,7 +103,7 @@ public class LeXeMerger {
      * @param pathToMergeSchema
      *            String representing the path to a folder in which merge schemas are stored. This merge
      *            schemas will be used during the merge process.
-     *            <p/>
+     *            
      *            If <b>null</b> the execution path will be used
      * @author sholzer (12.03.2015)
      * @param ct
@@ -125,7 +125,7 @@ public class LeXeMerger {
      * @param pathToMergeSchema
      *            String representing the path to a folder in which merge schemas are stored. This merge
      *            schemas will be used during the merge process.
-     *            <p/>
+     *            
      *            If <b>null</b> the execution path will be used
      * @author sholzer (12.03.2015)
      * @param cht

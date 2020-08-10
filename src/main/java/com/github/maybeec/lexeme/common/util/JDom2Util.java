@@ -73,7 +73,7 @@ public class JDom2Util {
     /**
      * @param element
      *            {@link org.jdom2.Element}
-     * @return {@link List}&lt;{@link String}>
+     * @return {@link List}&lt;{@link String}&gt;
      * @author sholzer (05.05.2015)
      */
     public List<Text> getTextNodes(Element element) {
@@ -269,7 +269,7 @@ public class JDom2Util {
      * Returns all child elements of the given Element regardless of their Namespaces
      * @param element
      *            {@link Element}
-     * @return {@link List}&lt;{@link Element}>
+     * @return {@link List}&lt;{@link Element}&gt;
      * @author sholzer (13.05.2015)
      */
     public List<Element> getChildrenFromElement(Element element) {
@@ -292,7 +292,7 @@ public class JDom2Util {
      *            not null root of the patch document
      * @param conflictHandling
      *            decides which values will be preferred in case of different locations in base and patch
-     * @return Map&lt;String, String> with the namespace uris as keys and the schema locations as values
+     * @return Map&lt;String, String&gt; with the namespace uris as keys and the schema locations as values
      * @author sholzer (Sep 2, 2015)
      */
     public Map<String, String> getNamespaceLocations(Element base, Element patch,
@@ -408,7 +408,7 @@ public class JDom2Util {
     /**
      * Creates a Namespace for a dtd defined document
      * @param publicId
-     *            the publicId from the &lt;!-Doctype> node
+     *            the publicId from the &lt;!-Doctype&gt; node
      * @return Namespace with an URI missing the leading '-' from the publicId
      * @author sholzer (Sep 4, 2015)
      */

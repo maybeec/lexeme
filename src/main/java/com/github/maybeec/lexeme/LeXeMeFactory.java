@@ -51,7 +51,7 @@ public final class LeXeMeFactory {
      *            String path to the MergeSchema to be used on this document. Note: Will in future builds
      *            replaced by pathToMergeSchemas which leads to a directory containing MergeSchemas for every
      *            used namespace.
-     *            <p/>
+     *            
      *            If <b>null</b> the default MergeSchemas will be used
      * @author sholzer (12.03.2015)
      * @return a LeXeMerger
