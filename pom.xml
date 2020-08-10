@@ -6,7 +6,7 @@
   <packaging>jar</packaging>
 
   <name>LeXeMe - Language-aware XML Merger</name>
-  <version>1.1.0-SNAPSHOT</version>
+  <version>1.1.0</version>
   <description>Tool for language-aware 2-way merging of XML documents</description>
 
   <developers>
