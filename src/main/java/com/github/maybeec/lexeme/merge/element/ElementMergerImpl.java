@@ -98,8 +98,8 @@ public class ElementMergerImpl implements ElementMerger {
         this.provider = provider;
         // if a reference exists
         if (!handling.getScopeRef().equals("")) {
-            logger.debug("Found MergeSchema reference: {}@{}", handling.getScopeRef(), (handling
-                .getNamespaceRef().equals("") ? "local" : handling.getNamespaceRef()));
+            logger.debug("Found MergeSchema reference: {}@{}", handling.getScopeRef(),
+                (handling.getNamespaceRef().equals("") ? "local" : handling.getNamespaceRef()));
             referencedNamespace = handling.getNamespaceRef();
             handlingScopeList.addAll(getScopeFromRef(handling.getScopeRef(), handling.getNamespaceRef()));
         }
@@ -122,8 +122,8 @@ public class ElementMergerImpl implements ElementMerger {
         this.provider = provider;
         // if a reference exists
         if (!handling.getScopeRef().equals("")) {
-            logger.debug("Found MergeSchema reference: {}@{}", handling.getScopeRef(), (handling
-                .getNamespaceRef().equals("") ? "local" : handling.getNamespaceRef()));
+            logger.debug("Found MergeSchema reference: {}@{}", handling.getScopeRef(),
+                (handling.getNamespaceRef().equals("") ? "local" : handling.getNamespaceRef()));
             referencedNamespace = handling.getNamespaceRef();
             handlingScopeList.addAll(getScopeFromRef(handling.getScopeRef(), handling.getNamespaceRef()));
         }
@@ -188,8 +188,7 @@ public class ElementMergerImpl implements ElementMerger {
         RelativeState state = RelativeState.FIRSTELEMENTFROMBASE;
         if (!element1.getChildren().isEmpty()) {
             Element firstBaseElement = element1.getChildren().get(0);
-            Element firstPatchElement =
-                element2.getChild(firstBaseElement.getName(), firstBaseElement.getNamespace());
+            Element firstPatchElement = element2.getChild(firstBaseElement.getName(), firstBaseElement.getNamespace());
             int patchIndex = element2.getChildren().indexOf(firstPatchElement);
             if (patchIndex > 0) {
                 state = RelativeState.FIRSTELEMENTFROMPATCH;
@@ -225,8 +224,7 @@ public class ElementMergerImpl implements ElementMerger {
             }
         }
         // Finds a match for base nodes from the patch nodes and merges them if possible
-        matchAndMergeNodes(mergedElement.getContent().listIterator(), patchContent, usePatchText,
-            conflictHandling);
+        matchAndMergeNodes(mergedElement.getContent().listIterator(), patchContent, usePatchText, conflictHandling);
 
         ListIterator<Content> resultIterator = mergedElement.getContent().listIterator();
         ListIterator<Content> patchIterator = patchContent.listIterator();
@@ -265,9 +263,8 @@ public class ElementMergerImpl implements ElementMerger {
                          * The second condition covers the follwing case: <base> <a/> <c/> </base> <patch>
                          * <a/> <b/> <c/> </patch>
                          */
-                        if (sameName
-                            || (peekFor(lastGroupElement.getName(), patchIterator) && lastGroupElement
-                                .getName().equals(currentPatchElement.getName()))) {
+                        if (sameName || (peekFor(lastGroupElement.getName(), patchIterator)
+                            && lastGroupElement.getName().equals(currentPatchElement.getName()))) {
                             resultIterator.add(currentPatchElement.clone());
                             patchIterator.remove();
                             continue;
@@ -370,8 +367,7 @@ public class ElementMergerImpl implements ElementMerger {
         try {
             logger.debug("{}: Searching for {}", logId, element.getName());
             for (Handling handling : handlingScopeList) {
-                if (handling.getFor().equals(element.getName())
-                    && evaluateWhereString(element, handling.getWhere())) {
+                if (handling.getFor().equals(element.getName()) && evaluateWhereString(element, handling.getWhere())) {
                     if (handling.isUnique()) {
                         usedUniqueHandlingList.add(handling);
                     }
@@ -387,14 +383,12 @@ public class ElementMergerImpl implements ElementMerger {
             }
             return defaultHandling;
         } catch (XPathExpressionException e) {
-            String message =
-                String
-                    .format(
-                        "%s: Caught unexpected XPathExpressionException. Probaply the 'where'-statement is corrupt:%s",
-                        logId, e.getMessage());
+            String message = String.format(
+                "%s: Caught unexpected XPathExpressionException. Probaply the 'where'-statement is corrupt:%s", logId,
+                e.getMessage());
 
             logger.error(message);
-            throw new ElementsCantBeMergedException(message);
+            throw new ElementsCantBeMergedException(message, e);
         }
     }
 
@@ -549,9 +543,8 @@ public class ElementMergerImpl implements ElementMerger {
                     // casts to Elements
                     Element resultElement = (Element) resultNode;
                     Element patchElement = (Element) patchNode;
-                    boolean foreignNamespace =
-                        !(resultElement.getNamespaceURI().equals(myNamespace) || resultElement
-                            .getNamespaceURI().equals(referencedNamespace));
+                    boolean foreignNamespace = !(resultElement.getNamespaceURI().equals(myNamespace)
+                        || resultElement.getNamespaceURI().equals(referencedNamespace));
                     // if they share the same namespace continue. Otherwise go to the next patch node
                     if (resultElement.getNamespace().equals(patchElement.getNamespace())) {
                         // retrieve a fitting Handling object
@@ -636,19 +629,15 @@ public class ElementMergerImpl implements ElementMerger {
      *            the conflictHandlingtype
      * @author sholzer (Aug 24, 2015)
      */
-    private void mergeAttributes(Element base, Element patch, Element result,
-        ConflictHandlingType conflictHandling) {
+    private void mergeAttributes(Element base, Element patch, Element result, ConflictHandlingType conflictHandling) {
         for (org.jdom2.Attribute attribute : JDom2Util.getInstance().getUniqueAttributes(base, patch)) {
 
-            org.jdom2.Attribute baseAttribute =
-                base.getAttribute(attribute.getName(), attribute.getNamespace());
-            org.jdom2.Attribute patchAttribute =
-                patch.getAttribute(attribute.getName(), attribute.getNamespace());
+            org.jdom2.Attribute baseAttribute = base.getAttribute(attribute.getName(), attribute.getNamespace());
+            org.jdom2.Attribute patchAttribute = patch.getAttribute(attribute.getName(), attribute.getNamespace());
             String baseAttributeValue = (baseAttribute == null ? null : baseAttribute.getValue());
             String patchAttributeValue = (patchAttribute == null ? null : patchAttribute.getValue());
-            String mergedAttributeValue =
-                AttributeMergerFactory.build(getAttributeForName(attribute.getName())).merge(
-                    baseAttributeValue, patchAttributeValue, conflictHandling);
+            String mergedAttributeValue = AttributeMergerFactory.build(getAttributeForName(attribute.getName()))
+                .merge(baseAttributeValue, patchAttributeValue, conflictHandling);
             result.setAttribute(attribute.getName(), mergedAttributeValue, attribute.getNamespace());
         }
     }
@@ -733,8 +722,7 @@ public class ElementMergerImpl implements ElementMerger {
                 }
             }
             if (counter > 1) {
-                throw new MultipleInstancesOfUniqueElementException("Found " + counter + " instances of "
-                    + h.getFor());
+                throw new MultipleInstancesOfUniqueElementException("Found " + counter + " instances of " + h.getFor());
             }
         }
     }

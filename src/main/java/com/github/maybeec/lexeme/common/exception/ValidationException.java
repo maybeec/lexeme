@@ -7,19 +7,52 @@ package com.github.maybeec.lexeme.common.exception;
 public class ValidationException extends XMLMergeException {
 
     /**
-     * @param string
-     *            Message containing information
-     * @author sholzer (20.04.2015)
+     * Create a new ValidationException.
      */
-    public ValidationException(String string) {
-        super(string);
+    public ValidationException() {
+        super();
     }
 
     /**
+     * Create a new ValidationException wrapping an existing exception.
      *
-     * @author sholzer (20.04.2015)
+     * <p>
+     * The existing exception will be embedded in the new one, and its message will become the default message
+     * for the ValidationException.
+     * </p>
+     *
+     * @param e
+     *            The exception to be wrapped in a ValidationException.
      */
-    public ValidationException() {
+    public ValidationException(Exception e) {
+        super(e);
+    }
+
+    /**
+     * Create a new ValidationException.
+     *
+     * @param message
+     *            The error or warning message.
+     */
+    public ValidationException(String message) {
+        super(message);
+    }
+
+    /**
+     * Create a new ValidationException from an existing exception.
+     *
+     * <p>
+     * The existing exception will be embedded in the new one, but the new exception will have its own
+     * message.
+     * </p>
+     *
+     * @param message
+     *            The detail message.
+     * @param e
+     *            The exception to be wrapped in a ValidationException.
+     */
+    public ValidationException(String message, Exception e) {
+        super(message, e);
     }
 
     /**

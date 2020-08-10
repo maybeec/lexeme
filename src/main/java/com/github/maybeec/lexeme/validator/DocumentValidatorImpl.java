@@ -83,9 +83,8 @@ public class DocumentValidatorImpl implements DocumentValidator {
         try {
             dbf.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
         } catch (IllegalArgumentException x) {
-            throw new ValidationException(String.format(
-                "%s: JAXP DocumentBuilderFactory attribute not recognized: %s", x.getClass().getName(),
-                JAXP_SCHEMA_LANGUAGE));
+            throw new ValidationException(String.format("%s: JAXP DocumentBuilderFactory attribute not recognized: %s",
+                x.getClass().getName(), JAXP_SCHEMA_LANGUAGE), x);
         }
 
         final String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
@@ -114,9 +113,7 @@ public class DocumentValidatorImpl implements DocumentValidator {
         if (!schemas.isEmpty()) {
             dbf.setAttribute(JAXP_SCHEMA_SOURCE, schemas.toArray());
         }
-        StringReader stringReader;
-        try {
-            stringReader = new StringReader(JDom2Util.getInstance().parseString(node));
+        try (StringReader stringReader = new StringReader(JDom2Util.getInstance().parseString(node))) {
             InputSource inputSource = new InputSource(stringReader);
             DocumentBuilder db = dbf.newDocumentBuilder();
             db.setErrorHandler(new ValidationErrorHandler());
@@ -124,16 +121,18 @@ public class DocumentValidatorImpl implements DocumentValidator {
         } catch (SAXException e) {
             logger.warn("Validation failed due to: {}\n{}", e.getMessage(), node.toString());
             if (strict) {
-                throw new ValidationException(e.getMessage());
+                throw new ValidationException("Validation failed due to: " + e.getMessage(), e);
             }
         } catch (ParserConfigurationException e) {
             throw new ValidationException(
                 "Unexpected ParserConfigurationException caught while creating a DocumentBuilder."
-                    + " This should not have happened: %s" + e.getMessage());
+                    + " This should not have happened: %s" + e.getMessage(),
+                e);
         } catch (IOException e) {
             throw new ValidationException(
                 "Caught IOException while parsing the to a String transformed Node. This should not have happened: %s"
-                    + e.getMessage());
+                    + e.getMessage(),
+                e);
         }
 
     }

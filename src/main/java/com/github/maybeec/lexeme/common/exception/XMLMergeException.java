@@ -1,26 +1,58 @@
 package com.github.maybeec.lexeme.common.exception;
 
 /**
- * A generic exception thrown during the merge process if this library
+ * A generic exception thrown during the merge process of this library
  * @author sholzer (11.02.2015)
  */
 public class XMLMergeException extends Exception {
 
     /**
+     * Create a new XMLMergeException.
+     */
+    public XMLMergeException() {
+        super();
+    }
+
+    /**
+     * Create a new XMLMergeException wrapping an existing exception.
+     *
+     * <p>
+     * The existing exception will be embedded in the new one, and its message will become the default message
+     * for the XMLMergeException.
+     * </p>
+     *
+     * @param e
+     *            The exception to be wrapped in a XMLMergeException.
+     */
+    public XMLMergeException(Exception e) {
+        super(e);
+    }
+
+    /**
+     * Create a new XMLMergeException.
+     *
      * @param message
-     *            String
-     * @author sholzer (10.03.2015)
+     *            The error or warning message.
      */
     public XMLMergeException(String message) {
         super(message);
     }
 
     /**
+     * Create a new XMLMergeException from an existing exception.
      *
-     * @author sholzer (10.03.2015)
+     * <p>
+     * The existing exception will be embedded in the new one, but the new exception will have its own
+     * message.
+     * </p>
+     *
+     * @param message
+     *            The detail message.
+     * @param e
+     *            The exception to be wrapped in a XMLMergeException.
      */
-    public XMLMergeException() {
-
+    public XMLMergeException(String message, Exception e) {
+        super(message, e);
     }
 
     /**
