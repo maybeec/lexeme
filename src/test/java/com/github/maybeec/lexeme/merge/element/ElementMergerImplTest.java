@@ -12,9 +12,6 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
@@ -35,9 +32,6 @@ import com.github.maybeec.lexeme.LeXeMerger;
 import com.github.maybeec.lexeme.common.exception.MultipleInstancesOfUniqueElementException;
 import com.github.maybeec.lexeme.common.exception.XMLMergeException;
 import com.github.maybeec.lexeme.common.util.JDom2Util;
-import com.github.maybeec.lexeme.merge.element.ElementMerger;
-import com.github.maybeec.lexeme.merge.element.ElementMergerFactory;
-import com.github.maybeec.lexeme.merge.element.ElementMergerImpl;
 import com.github.maybeec.lexeme.merge.element.matcher.ElementComparator;
 import com.github.maybeec.lexeme.merge.element.matcher.ElementComparatorBuilder;
 import com.github.maybeec.lexeme.merge.element.matcher.ElementComparatorFactory;
@@ -47,6 +41,10 @@ import com.github.maybeec.lexeme.mergeschema.Definition;
 import com.github.maybeec.lexeme.mergeschema.Handling;
 import com.github.maybeec.lexeme.mergeschema.MergeSchema;
 import com.github.maybeec.lexeme.schemaprovider.MergeSchemaProvider;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.Unmarshaller;
 
 /**
  *
@@ -74,10 +72,8 @@ public class ElementMergerImplTest {
     @Test
     public void testMergeSimpleElementOnlyContent() throws Exception {
 
-        Document firstDoc =
-            JDom2Util.getInstance().getDocument(path + "Base/SimpleElementOnlyContent.xml", false);
-        Document secondDoc =
-            JDom2Util.getInstance().getDocument(path + "Patch/SimpleElementOnlyContent.xml", false);
+        Document firstDoc = JDom2Util.getInstance().getDocument(path + "Base/SimpleElementOnlyContent.xml", false);
+        Document secondDoc = JDom2Util.getInstance().getDocument(path + "Patch/SimpleElementOnlyContent.xml", false);
         Handling testConfig = new Handling();
         // testConfig.setUnique(HandlingType.FULL_ACCU);
         testConfig.setFor("A");
@@ -115,10 +111,8 @@ public class ElementMergerImplTest {
     @Test
     public void testMergeSimpleElementOnlyAttributes() throws JDOMException, IOException, XMLMergeException {
 
-        Document firstDoc =
-            JDom2Util.getInstance().getDocument(path + "Base/SimpleElementOnlyAttributes.xml", false);
-        Document secondDoc =
-            JDom2Util.getInstance().getDocument(path + "Patch/SimpleElementOnlyAttributes.xml", false);
+        Document firstDoc = JDom2Util.getInstance().getDocument(path + "Base/SimpleElementOnlyAttributes.xml", false);
+        Document secondDoc = JDom2Util.getInstance().getDocument(path + "Patch/SimpleElementOnlyAttributes.xml", false);
         Handling testConfig = new Handling();
         // testConfig.setType(HandlingType.FULL_ACCU);
         testConfig.setFor("A");
@@ -173,8 +167,8 @@ public class ElementMergerImplTest {
         Element element1 = firstDoc.getRootElement();
         Element element2 = secondDoc.getRootElement();
         Element result = test.merge(element1, element2, ConflictHandlingType.PATCHATTACHOROVERWRITE);
-        assertTrue("Wrong attribute value: " + result.getAttribute("a").getValue(), result.getAttribute("a")
-            .getValue().equals(element2.getAttribute("a").getValue()));
+        assertTrue("Wrong attribute value: " + result.getAttribute("a").getValue(),
+            result.getAttribute("a").getValue().equals(element2.getAttribute("a").getValue()));
 
         assertTrue("Wrong text content: " + result.getText(),
             result.getText().equals(element1.getText() + element2.getText()));
@@ -194,10 +188,8 @@ public class ElementMergerImplTest {
     @Test
     public void testMergeElementWithChildElement() throws Exception {
 
-        Document firstDoc =
-            JDom2Util.getInstance().getDocument(path + "Base/ElementWithChildElement.xml", false);
-        Document secondDoc =
-            JDom2Util.getInstance().getDocument(path + "Patch/ElementWithChildElement.xml", false);
+        Document firstDoc = JDom2Util.getInstance().getDocument(path + "Base/ElementWithChildElement.xml", false);
+        Document secondDoc = JDom2Util.getInstance().getDocument(path + "Patch/ElementWithChildElement.xml", false);
         Handling testRootConfig = new Handling();
         testRootConfig.setUnique(true);
         testRootConfig.setFor("A");
@@ -238,10 +230,8 @@ public class ElementMergerImplTest {
     @Test
     public void testMergeElementWithChildElements() throws Exception {
 
-        Document firstDoc =
-            JDom2Util.getInstance().getDocument(path + "Base/ElementWithChildElements.xml", false);
-        Document secondDoc =
-            JDom2Util.getInstance().getDocument(path + "Patch/ElementWithChildElements.xml", false);
+        Document firstDoc = JDom2Util.getInstance().getDocument(path + "Base/ElementWithChildElements.xml", false);
+        Document secondDoc = JDom2Util.getInstance().getDocument(path + "Patch/ElementWithChildElements.xml", false);
         Handling testRootConfig = new Handling();
         testRootConfig.setUnique(true);
         testRootConfig.setFor("A");
@@ -428,13 +418,12 @@ public class ElementMergerImplTest {
         });
 
         when(provider.getMergeSchemaForNamespaceURI("thatNamespace")).thenReturn(schema);
-        when(provider.getCriterionFor(Matchers.anyString(), Matchers.anyString())).thenReturn(
-            new LinkedList<Criterion>());
+        when(provider.getCriterionFor(Matchers.anyString(), Matchers.anyString()))
+            .thenReturn(new LinkedList<Criterion>());
 
         final LeXeMerger LeXeMerger = Mockito.mock(LeXeMerger.class);
-        when(
-            LeXeMerger.merge(Matchers.any(Element.class), Matchers.any(Element.class),
-                Matchers.any(ConflictHandlingType.class))).thenReturn(new Element("foobar", "thatNamespace"));
+        when(LeXeMerger.merge(Matchers.any(Element.class), Matchers.any(Element.class),
+            Matchers.any(ConflictHandlingType.class))).thenReturn(new Element("foobar", "thatNamespace"));
         LeXeMeFactory.setBuilder(new LeXeMeBuilder() {
 
             @Override
@@ -472,8 +461,8 @@ public class ElementMergerImplTest {
      *             xpath problems
      */
     @Test
-    public void testEvaluateWhereStringTrue() throws ParserConfigurationException,
-        ReflectiveOperationException, XPathExpressionException {
+    public void testEvaluateWhereStringTrue()
+        throws ParserConfigurationException, ReflectiveOperationException, XPathExpressionException {
 
         String elementName = "A";
         String attName = "a";
@@ -501,8 +490,8 @@ public class ElementMergerImplTest {
      *             xpath problems
      */
     @Test
-    public void testEvaluateWhereStringFalse() throws ParserConfigurationException,
-        ReflectiveOperationException, XPathExpressionException {
+    public void testEvaluateWhereStringFalse()
+        throws ParserConfigurationException, ReflectiveOperationException, XPathExpressionException {
 
         String elementName = "A";
         String attName = "a";
@@ -530,8 +519,8 @@ public class ElementMergerImplTest {
      *             xpath problems
      */
     @Test
-    public void testEvaluateWhereStringDefault() throws ParserConfigurationException,
-        ReflectiveOperationException, XPathExpressionException {
+    public void testEvaluateWhereStringDefault()
+        throws ParserConfigurationException, ReflectiveOperationException, XPathExpressionException {
 
         String elementName = "A";
         String attName = "a";
@@ -596,8 +585,8 @@ public class ElementMergerImplTest {
         ElementComparatorFactory.setBuilder(comparatorBuilder);
         LeXeMeBuilder leXeMeBuilder = mock(LeXeMeBuilder.class);
         LeXeMeFactory.setBuilder(leXeMeBuilder);
-        when(leXeMeBuilder.build(Matchers.any(MergeSchemaProvider.class))).thenThrow(
-            new RuntimeException("Invalid method call: XmlLawMergeFactory.build"));
+        when(leXeMeBuilder.build(Matchers.any(MergeSchemaProvider.class)))
+            .thenThrow(new RuntimeException("Invalid method call: XmlLawMergeFactory.build"));
 
         Document firstDoc = JDom2Util.getInstance().getDocument(path + "extOne_Base.xml", false);
         Document secondDoc = JDom2Util.getInstance().getDocument(path + "extOne_Patch.xml", false);
@@ -616,14 +605,13 @@ public class ElementMergerImplTest {
         referedHandling.getHandling().add(bhandling);
 
         when(provider.getMergeSchemaForNamespaceURI("http://bar.com")).thenReturn(referedHandling);
-        when(genericComparator.compare(Matchers.any(Element.class), Matchers.any(Element.class))).thenReturn(
-            false); // prevents
-                    // the
-                    // match
-                    // of
-                    // the
-                    // <ns:b/>
-                    // elements
+        when(genericComparator.compare(Matchers.any(Element.class), Matchers.any(Element.class))).thenReturn(false); // prevents
+                                                                                                                     // the
+                                                                                                                     // match
+                                                                                                                     // of
+                                                                                                                     // the
+                                                                                                                     // <ns:b/>
+                                                                                                                     // elements
 
         ElementMergerImpl test = new ElementMergerImpl(rootHandling, provider);
         Element result = test.merge(base, patch, ConflictHandlingType.PATCHOVERWRITE);
@@ -659,8 +647,8 @@ public class ElementMergerImplTest {
         ElementComparatorFactory.setBuilder(comparatorBuilder);
         LeXeMeBuilder leXeMeBuilder = mock(LeXeMeBuilder.class);
         LeXeMeFactory.setBuilder(leXeMeBuilder);
-        when(leXeMeBuilder.build(Matchers.any(MergeSchemaProvider.class))).thenThrow(
-            new RuntimeException("Invalid method call: XmlLawMergeFactory.build"));
+        when(leXeMeBuilder.build(Matchers.any(MergeSchemaProvider.class)))
+            .thenThrow(new RuntimeException("Invalid method call: XmlLawMergeFactory.build"));
 
         Document firstDoc = JDom2Util.getInstance().getDocument(path + "extOne_Base.xml", false);
         Document secondDoc = JDom2Util.getInstance().getDocument(path + "extOne_Patch.xml", false);
@@ -682,14 +670,13 @@ public class ElementMergerImplTest {
         otherRootHandling.getHandling().add(referedHandling);
 
         when(provider.getMergeSchemaForNamespaceURI("http://bar.com")).thenReturn(referedHandling);
-        when(genericComparator.compare(Matchers.any(Element.class), Matchers.any(Element.class))).thenReturn(
-            false); // prevents
-                    // the
-                    // match
-                    // of
-                    // the
-                    // <ns:b/>
-                    // elements
+        when(genericComparator.compare(Matchers.any(Element.class), Matchers.any(Element.class))).thenReturn(false); // prevents
+                                                                                                                     // the
+                                                                                                                     // match
+                                                                                                                     // of
+                                                                                                                     // the
+                                                                                                                     // <ns:b/>
+                                                                                                                     // elements
 
         ElementMergerImpl test = new ElementMergerImpl(rootHandling, provider);
         Element result = test.merge(base, patch, ConflictHandlingType.PATCHOVERWRITE);

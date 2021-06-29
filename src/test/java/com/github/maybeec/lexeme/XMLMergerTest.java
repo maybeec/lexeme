@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.util.List;
 
-import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.jdom2.Element;
@@ -28,6 +27,8 @@ import com.github.maybeec.lexeme.mergeschema.Criterion;
 import com.github.maybeec.lexeme.mergeschema.Handling;
 import com.github.maybeec.lexeme.mergeschema.MergeSchema;
 import com.github.maybeec.lexeme.schemaprovider.MergeSchemaProvider;
+
+import jakarta.xml.bind.JAXBException;
 
 /**
  *
@@ -100,8 +101,7 @@ public class XMLMergerTest {
      */
     @SuppressWarnings("javadoc")
     @Test
-    public void testPublicConstructor() throws FileNotFoundException, ParserConfigurationException,
-        JAXBException {
+    public void testPublicConstructor() throws FileNotFoundException, ParserConfigurationException, JAXBException {
 
         String path = "src/test/resources/xmlmerger/validMergeSchema.xml";
         new LeXeMerger(path);
@@ -148,8 +148,7 @@ public class XMLMergerTest {
         Element e = new Element("foo");
 
         Mockito.when(provider.getMergeSchemaForNamespaceURI(Matchers.anyString())).thenReturn(schema);
-        Mockito.when(elementMerger.merge(e, e, ConflictHandlingType.BASEOVERWRITE)).thenReturn(
-            new Element("foo"));
+        Mockito.when(elementMerger.merge(e, e, ConflictHandlingType.BASEOVERWRITE)).thenReturn(new Element("foo"));
 
         test.merge(e, e, ConflictHandlingType.BASEOVERWRITE);
 
@@ -166,8 +165,7 @@ public class XMLMergerTest {
         Charset charSet = StandardCharsets.UTF_8;
         File baseFile = new File("src/test/resources/systemtests/bases/FirstBase.xml");
         String patchString =
-            JDom2Util.getInstance().readFile("src/test/resources/systemtests/patches/FirstPatch.xml",
-                charSet.name());
+            JDom2Util.getInstance().readFile("src/test/resources/systemtests/patches/FirstPatch.xml", charSet.name());
 
         LeXeMerger test = new LeXeMerger(new MergeSchemaProvider() {
 
@@ -263,8 +261,8 @@ class ElementMergerStub implements ElementMerger {
      * @author sholzer (May 31, 2016)
      */
     @Override
-    public org.jdom2.Element merge(org.jdom2.Element element1, org.jdom2.Element element2,
-        ConflictHandlingType type) throws XMLMergeException {
+    public org.jdom2.Element merge(org.jdom2.Element element1, org.jdom2.Element element2, ConflictHandlingType type)
+        throws XMLMergeException {
         if (earlyExit) {
             throw new EarlyExitRuntimeException();
         }

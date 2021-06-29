@@ -10,10 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Unmarshaller;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +20,10 @@ import com.github.maybeec.lexeme.mergeschema.Criterion;
 import com.github.maybeec.lexeme.mergeschema.DefaultCriterionType;
 import com.github.maybeec.lexeme.mergeschema.Handling;
 import com.github.maybeec.lexeme.mergeschema.MergeSchema;
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.Unmarshaller;
 
 /**
  *
