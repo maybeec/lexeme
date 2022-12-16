@@ -14,285 +14,309 @@ import com.github.maybeec.lexeme.mergeschema.Definition;
 import com.github.maybeec.lexeme.mergeschema.MergeSchema;
 import com.github.maybeec.lexeme.schemaprovider.MergeSchemaProvider;
 
-/**
- *
- * @author sholzer (15.04.2015)
- */
 public class DocValImplTest {
 
-    /**
-     * path to files
-     */
-    String pathRoot = "src/test/resources/validator/";
+  /**
+   * path to files
+   */
+  String pathRoot = "src/test/resources/validator/";
 
-    /**
-     * Test method for
-     * {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(org.jdom2.Element)}.
-     * @throws Exception
-     *             when something somewhere goes wrong
-     */
-    @Test
-    public void testValidateNodeAgainstSingleXSDFirstTest() throws Exception {
-        // Get Node from File
-        String pathToDoc = pathRoot + "FirstTest.xml";
-        Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
-        Element validNode = doc.getRootElement();
-        assert validNode != null;
-        DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
+  /**
+   * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(org.jdom2.Element)}.
+   *
+   * @throws Exception when something somewhere goes wrong
+   */
+  @Test
+  public void testValidateNodeAgainstSingleXSDFirstTest() throws Exception {
 
-            @Override
-            public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
-                return new MergeSchema();
-            }
+    // Get Node from File
+    String pathToDoc = this.pathRoot + "FirstTest.xml";
+    Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
+    Element validNode = doc.getRootElement();
+    assert validNode != null;
+    DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
 
-            @Override
-            public String getPath() {
-                return null;
-            }
+      @Override
+      public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
 
-            @Override
-            public Criterion getDefaultCriterion(String namespaceUri) {
-                return new Criterion();
-            }
+        return new MergeSchema();
+      }
 
-            @Override
-            public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                //
-                return null;
-            }
+      @Override
+      public String getPath() {
 
-            @Override
-            public void setPath(Path path) {
-                //
+        return null;
+      }
 
-            }
+      @Override
+      public Criterion getDefaultCriterion(String namespaceUri) {
 
-            @Override
-            public List<Criterion> getDeepCriterion(String name, String namespace) {
-                //
-                return null;
-            }
+        return new Criterion();
+      }
 
-        });
+      @Override
+      public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
 
-        test.validate(validNode);
+        //
+        return null;
+      }
 
-    }
+      @Override
+      public void setPath(Path path) {
+        //
 
-    /**
-     * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(Element)}.
-     * @throws Exception
-     *             when something somewhere goes wrong
-     */
-    @Test(expected = ValidationException.class)
-    public void testValidateNodeAgainstSingleXSDSecondTest() throws Exception {
-        // Get Node from File
-        String pathToDoc = pathRoot + "SecondTest.xml";
-        Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
-        Element validNode = doc.getRootElement();
-        assert validNode != null;
-        DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
+      }
 
-            @Override
-            public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
-                return new MergeSchema();
-            }
+      @Override
+      public List<Criterion> getDeepCriterion(String name, String namespace) {
 
-            @Override
-            public String getPath() {
-                return null;
-            }
+        //
+        return null;
+      }
 
-            @Override
-            public Criterion getDefaultCriterion(String namespaceUri) {
-                return new Criterion();
-            }
+    });
 
-            @Override
-            public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                return null;
-            }
+    test.validate(validNode);
 
-            @Override
-            public void setPath(Path path) {
-                //
+  }
 
-            }
+  /**
+   * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(Element)}.
+   *
+   * @throws Exception when something somewhere goes wrong
+   */
+  @Test(expected = ValidationException.class)
+  public void testValidateNodeAgainstSingleXSDSecondTest() throws Exception {
 
-            @Override
-            public List<Criterion> getDeepCriterion(String name, String namespace) {
-                //
-                return null;
-            }
+    // Get Node from File
+    String pathToDoc = this.pathRoot + "SecondTest.xml";
+    Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
+    Element validNode = doc.getRootElement();
+    assert validNode != null;
+    DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
 
-        });
-        test.setStrict(true);
-        test.validate(validNode);
+      @Override
+      public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
 
-    }
+        return new MergeSchema();
+      }
 
-    /**
-     * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(Element)}.
-     * @throws Exception
-     *             when something somewhere goes wrong
-     */
-    @Test
-    public void testValidateNodeAgainstMultipleXSDThirdTest() throws Exception {
-        // Get Node from File
-        String pathToDoc = pathRoot + "ThirdTest.xml";
-        Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
-        Element validNode = doc.getRootElement();
-        assert validNode != null;
-        DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
+      @Override
+      public String getPath() {
 
-            @Override
-            public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
-                return new MergeSchema();
-            }
+        return null;
+      }
 
-            @Override
-            public String getPath() {
-                return null;
-            }
+      @Override
+      public Criterion getDefaultCriterion(String namespaceUri) {
 
-            @Override
-            public Criterion getDefaultCriterion(String namespaceUri) {
-                return new Criterion();
-            }
+        return new Criterion();
+      }
 
-            @Override
-            public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                //
-                return null;
-            }
+      @Override
+      public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
 
-            @Override
-            public void setPath(Path path) {
-                //
+        return null;
+      }
 
-            }
+      @Override
+      public void setPath(Path path) {
+        //
 
-            @Override
-            public List<Criterion> getDeepCriterion(String name, String namespace) {
-                //
-                return null;
-            }
+      }
 
-        });
-        test.setStrict(true);
-        test.validate(validNode);
+      @Override
+      public List<Criterion> getDeepCriterion(String name, String namespace) {
 
-    }
+        //
+        return null;
+      }
 
-    /**
-     * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(Element)}.
-     * @throws Exception
-     *             when something somewhere goes wrong
-     */
-    @Test(expected = ValidationException.class)
-    public void testValidateNodeAgainstMultipleXSDFourthTest() throws Exception {
-        // Get Node from File
-        String pathToDoc = pathRoot + "FourthTest.xml";
-        Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
-        Element validNode = doc.getRootElement();
-        assert validNode != null;
-        DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
+    });
+    test.setStrict(true);
+    test.validate(validNode);
 
-            @Override
-            public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
-                return new MergeSchema();
-            }
+  }
 
-            @Override
-            public String getPath() {
-                return null;
-            }
+  /**
+   * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(Element)}.
+   *
+   * @throws Exception when something somewhere goes wrong
+   */
+  @Test
+  public void testValidateNodeAgainstMultipleXSDThirdTest() throws Exception {
 
-            @Override
-            public Criterion getDefaultCriterion(String namespaceUri) {
-                return new Criterion();
-            }
+    // Get Node from File
+    String pathToDoc = this.pathRoot + "ThirdTest.xml";
+    Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
+    Element validNode = doc.getRootElement();
+    assert validNode != null;
+    DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
 
-            @Override
-            public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                //
-                return null;
-            }
+      @Override
+      public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
 
-            @Override
-            public void setPath(Path path) {
+        return new MergeSchema();
+      }
 
-            }
+      @Override
+      public String getPath() {
 
-            @Override
-            public List<Criterion> getDeepCriterion(String name, String namespace) {
-                //
-                return null;
-            }
+        return null;
+      }
 
-        });
-        test.setStrict(true);
-        test.validate(validNode);
+      @Override
+      public Criterion getDefaultCriterion(String namespaceUri) {
 
-    }
+        return new Criterion();
+      }
 
-    /**
-     * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(Element)}.
-     * @throws Exception
-     *             when something somewhere goes wrong
-     */
-    @Test
-    public void testValidateAgainstAlienXSD() throws Exception {
-        String pathToDoc = pathRoot + "SecondTest.xml";
-        Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
-        Element validNode = doc.getRootElement();
-        assert validNode != null;
-        DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
+      @Override
+      public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
 
-            @Override
-            public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
+        //
+        return null;
+      }
 
-                MergeSchema ms = new MergeSchema();
-                if (namespaceURI.equals("http://www.example.org/FirstSchema")) {
-                    Definition d = new Definition();
-                    d.setLocation("src/test/resources/validator/AlienSchema.xsd");
-                    d.setNamespace("http://www.example.org/FirstSchema");
-                    ms.setDefinition(d);
-                }
-                return ms;
-            }
+      @Override
+      public void setPath(Path path) {
+        //
 
-            @Override
-            public String getPath() {
-                return null;
-            }
+      }
 
-            @Override
-            public Criterion getDefaultCriterion(String namespaceUri) {
-                return new Criterion();
-            }
+      @Override
+      public List<Criterion> getDeepCriterion(String name, String namespace) {
 
-            @Override
-            public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
-                //
-                return null;
-            }
+        //
+        return null;
+      }
 
-            @Override
-            public void setPath(Path path) {
-                //
+    });
+    test.setStrict(true);
+    test.validate(validNode);
 
-            }
+  }
 
-            @Override
-            public List<Criterion> getDeepCriterion(String name, String namespace) {
-                //
-                return null;
-            }
+  /**
+   * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(Element)}.
+   *
+   * @throws Exception when something somewhere goes wrong
+   */
+  @Test(expected = ValidationException.class)
+  public void testValidateNodeAgainstMultipleXSDFourthTest() throws Exception {
 
-        });
-        test.validate(validNode);
+    // Get Node from File
+    String pathToDoc = this.pathRoot + "FourthTest.xml";
+    Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
+    Element validNode = doc.getRootElement();
+    assert validNode != null;
+    DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
 
-    }
+      @Override
+      public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
+
+        return new MergeSchema();
+      }
+
+      @Override
+      public String getPath() {
+
+        return null;
+      }
+
+      @Override
+      public Criterion getDefaultCriterion(String namespaceUri) {
+
+        return new Criterion();
+      }
+
+      @Override
+      public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
+
+        //
+        return null;
+      }
+
+      @Override
+      public void setPath(Path path) {
+
+      }
+
+      @Override
+      public List<Criterion> getDeepCriterion(String name, String namespace) {
+
+        //
+        return null;
+      }
+
+    });
+    test.setStrict(true);
+    test.validate(validNode);
+
+  }
+
+  /**
+   * Test method for {@link com.github.maybeec.lexeme.validator.DocumentValidatorImpl#validate(Element)}.
+   *
+   * @throws Exception when something somewhere goes wrong
+   */
+  @Test
+  public void testValidateAgainstAlienXSD() throws Exception {
+
+    String pathToDoc = this.pathRoot + "SecondTest.xml";
+    Document doc = JDom2Util.getInstance().getDocument(pathToDoc, false);
+    Element validNode = doc.getRootElement();
+    assert validNode != null;
+    DocumentValidator test = new DocumentValidatorImpl(new MergeSchemaProvider() {
+
+      @Override
+      public MergeSchema getMergeSchemaForNamespaceURI(String namespaceURI) {
+
+        MergeSchema ms = new MergeSchema();
+        if (namespaceURI.equals("http://www.example.org/FirstSchema")) {
+          Definition d = new Definition();
+          d.setLocation("src/test/resources/validator/AlienSchema.xsd");
+          d.setNamespace("http://www.example.org/FirstSchema");
+          ms.setDefinition(d);
+        }
+        return ms;
+      }
+
+      @Override
+      public String getPath() {
+
+        return null;
+      }
+
+      @Override
+      public Criterion getDefaultCriterion(String namespaceUri) {
+
+        return new Criterion();
+      }
+
+      @Override
+      public List<Criterion> getCriterionFor(String elementName, String namespaceUri) {
+
+        //
+        return null;
+      }
+
+      @Override
+      public void setPath(Path path) {
+        //
+
+      }
+
+      @Override
+      public List<Criterion> getDeepCriterion(String name, String namespace) {
+
+        //
+        return null;
+      }
+
+    });
+    test.validate(validNode);
+
+  }
 
 }

@@ -9,44 +9,36 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.maybeec.lexeme.ConflictHandlingType;
-import com.github.maybeec.lexeme.common.util.JDom2Util;
 
-/**
- *
- * @author sholzer (Sep 2, 2015)
- */
 public class UtilTest {
 
-    /**
-     * instance under test
-     */
-    JDom2Util util;
+  /**
+   * instance under test
+   */
+  JDom2Util util;
 
-    /**
-     * @author sholzer (Sep 2, 2015)
-     */
-    @Before
-    public void setUp() {
-        util = JDom2Util.getInstance();
-    }
+  @Before
+  public void setUp() {
 
-    /**
-     * Tests if the getNamespaceLocation method returns the correct set of uri location pairs
-     * @throws Exception
-     *             test fails
-     * @author sholzer (Sep 2, 2015)
-     */
-    @Test
-    public void getNamespaceLocation() throws Exception {
-        String baseFile = "src/test/resources/systemtests/bases/Beans3.xml";
-        String patchFile = "src/test/resources/systemtests/patches/Beans3.xml";
+    this.util = JDom2Util.getInstance();
+  }
 
-        Document base = util.getDocument(baseFile);
-        Document patch = util.getDocument(patchFile);
+  /**
+   * Tests if the getNamespaceLocation method returns the correct set of uri location pairs
+   *
+   * @throws Exception test fails
+   */
+  @Test
+  public void getNamespaceLocation() throws Exception {
 
-        Map<String, String> testResult =
-            util.getNamespaceLocations(base.getRootElement(), patch.getRootElement(),
-                ConflictHandlingType.BASEOVERWRITE);
-        assertEquals(2, testResult.keySet().size());
-    }
+    String baseFile = "src/test/resources/systemtests/bases/Beans3.xml";
+    String patchFile = "src/test/resources/systemtests/patches/Beans3.xml";
+
+    Document base = this.util.getDocument(baseFile);
+    Document patch = this.util.getDocument(patchFile);
+
+    Map<String, String> testResult = this.util.getNamespaceLocations(base.getRootElement(), patch.getRootElement(),
+        ConflictHandlingType.BASEOVERWRITE);
+    assertEquals(2, testResult.keySet().size());
+  }
 }

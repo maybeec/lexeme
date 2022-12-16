@@ -2,66 +2,50 @@ package com.github.maybeec.lexeme.validator;
 
 import com.github.maybeec.lexeme.schemaprovider.MergeSchemaProvider;
 
-/**
- *
- * @author sholzer (Jul 7, 2015)
- */
 public final class DocumentValidatorFactory {
 
-    /**
-     *
-     */
-    private static DocumentValidatorBuilder builder = null;
+  private static DocumentValidatorBuilder builder = null;
 
-    /**
-     * Sets the field 'builder'.
-     * @param builder
-     *            new value of builder
-     * @author sholzer (Jul 7, 2015)
-     */
-    public static void setBuilder(DocumentValidatorBuilder builder) {
-        DocumentValidatorFactory.builder = builder;
+  /**
+   * Sets the field 'builder'.
+   *
+   * @param builder new value of builder
+   */
+  public static void setBuilder(DocumentValidatorBuilder builder) {
+
+    DocumentValidatorFactory.builder = builder;
+  }
+
+  private DocumentValidatorFactory() {
+
+  }
+
+  /**
+   * Builds a DocumentValidator implementation
+   *
+   * @param provider MergeSchemaProvider
+   * @return DocumentValidator
+   */
+  public static DocumentValidator build(MergeSchemaProvider provider) {
+
+    if (builder == null) {
+      builder = new GenericDocumentValidatorBuilder();
     }
 
-    /**
-     *
-     *
-     * @author sholzer (Jul 7, 2015)
-     */
-    private DocumentValidatorFactory() {
+    return builder.build(provider);
+  }
+
+  /**
+   * Default builder
+   */
+  static final class GenericDocumentValidatorBuilder implements DocumentValidatorBuilder {
+
+    @Override
+    public DocumentValidator build(MergeSchemaProvider provider) {
+
+      return new DocumentValidatorImpl(provider);
     }
 
-    /**
-     * Builds a DocumentValidator implementation
-     * @param provider
-     *            MergeSchemaProvider
-     * @return DocumentValidator
-     * @author sholzer (Jul 7, 2015)
-     */
-    public static DocumentValidator build(MergeSchemaProvider provider) {
-        if (builder == null) {
-            builder = new GenericDocumentValidatorBuilder();
-        }
-
-        return builder.build(provider);
-    }
-
-    /**
-     * Default builder
-     *
-     * @author sholzer (Sep 18, 2015)
-     */
-    static final class GenericDocumentValidatorBuilder implements DocumentValidatorBuilder {
-
-        /**
-         * {@inheritDoc}
-         * @author sholzer (31.05.2016)
-         */
-        @Override
-        public DocumentValidator build(MergeSchemaProvider provider) {
-            return new DocumentValidatorImpl(provider);
-        }
-
-    }
+  }
 
 }

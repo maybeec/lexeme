@@ -1,12 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.maybeec</groupId>
   <artifactId>lexeme</artifactId>
   <packaging>jar</packaging>
 
   <name>LeXeMe - Language-aware XML Merger</name>
-  <version>2.0.0</version>
+  <version>3.0.0</version>
   <description>Tool for language-aware 2-way merging of XML documents</description>
 
   <developers>
@@ -44,19 +43,14 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jaxb.version>3.0.1</jaxb.version>
+    <jaxb.version>4.0.1</jaxb.version>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>sax</groupId>
-      <artifactId>sax</artifactId>
-      <version>2.0.1</version>
-    </dependency>
-    <dependency>
       <groupId>org.jdom</groupId>
       <artifactId>jdom2</artifactId>
-      <version>2.0.6</version>
+      <version>2.0.6.1</version>
     </dependency>
     <dependency>
       <groupId>jaxen</groupId>
@@ -64,12 +58,11 @@
       <version>1.2.0</version>
     </dependency>
 
-
     <!-- Needed for JDK 9+ -->
     <dependency>
       <groupId>jakarta.xml.bind</groupId>
       <artifactId>jakarta.xml.bind-api</artifactId>
-      <version>${jaxb.version}</version>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.glassfish.jaxb</groupId>
@@ -83,31 +76,30 @@
     </dependency>
     <!-- END JDK 9 -->
 
-
     <!-- SL4j logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.7.31</version>
+      <version>2.0.6</version>
     </dependency>
 
     <!-- Test-Dependencies -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
+      <version>1.4.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>1.10.19</version>
+      <version>4.10.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -131,7 +123,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.4</version>
+        <version>3.3.0</version>
         <executions>
           <execution>
             <id>add-jaxb-source</id>
@@ -203,7 +195,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.5</version>
+        <version>0.8.8</version>
         <executions>
           <execution>
             <id>prepare-agent</id>
